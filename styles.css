@@ -1797,3 +1797,27 @@ main > section:not(.dark) + section:not(.dark) { padding-top: 0; }
   .f-row { grid-template-columns: 1fr; }
   .demo-bar > span:nth-child(2) { display: none; }
 }
+
+/* ------------------------------------------------------------ phone pass */
+
+/* the bar never wraps: the name holds, the section label gives way */
+.tb-mark { flex-shrink: 0; white-space: nowrap; padding-block: 0.5rem; }
+.tb-index { min-width: 0; }
+.tb-name { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+/* thumb-sized targets, on every width: tablets are touch too */
+.tb-index,
+.replay { min-height: 44px; }
+.to-top { display: inline-block; padding-block: 0.8rem; margin-block: -0.8rem; }
+
+@media (max-width: 640px) {
+  /* mono labels stay legible at arm's length */
+  .kicker, .label, .sec-idx, .tb-index, .index-panel a span,
+  .meta dt, .role dt, .dda dt, .cap span, .tu-label, .s-tag, .uc-n,
+  .demo-tag, .demo-foot, .chat-stamp, .st-n, .chip, .fork-origin, .lane-end,
+  .panels figcaption, .flow p, .measures li::before, .l-num, .to-top,
+  .role-list li::before, .landscape td::before { font-size: 0.8rem; }
+
+  /* snapping lands on the first frame, not the screen edge */
+  .flow { scroll-padding-inline: var(--gutter); }
+}

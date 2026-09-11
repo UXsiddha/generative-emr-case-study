@@ -76,7 +76,9 @@
       if (current) {
         var k = sections.indexOf(current) + 1;
         num.textContent = (k < 10 ? '0' : '') + k;
-        name.textContent = current.getAttribute('data-title') || current.id;
+        /* the rail's short name fits a phone-width bar; the long title is the fallback */
+        var short = rail && rail.querySelector('a[href="#' + id + '"] .r-name');
+        name.textContent = short ? short.textContent : (current.getAttribute('data-title') || current.id);
       } else {
         num.textContent = '';
         name.textContent = 'Index';
