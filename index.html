@@ -22,6 +22,25 @@
      reading line. The section label opens the full index. -->
 <header class="topbar" data-tone="dark">
   <a class="tb-mark" href="#top">Generative EMR</a>
+
+  <nav class="rail" aria-label="Sections">
+    <ol>
+      <li><a href="#overview"><span class="r-num">01</span><span class="r-name">Overview</span></a></li>
+      <li><a href="#problem"><span class="r-num">02</span><span class="r-name">The problem</span></a></li>
+      <li><a href="#existing"><span class="r-num">03</span><span class="r-name">Existing EMR</span></a></li>
+      <li><a href="#challenges"><span class="r-num">04</span><span class="r-name">Challenges</span></a></li>
+      <li><a href="#approach"><span class="r-num">05</span><span class="r-name">Approach</span></a></li>
+      <li><a href="#landscape"><span class="r-num">06</span><span class="r-name">Landscape</span></a></li>
+      <li><a href="#prototyping"><span class="r-num">07</span><span class="r-name">Prototyping</span></a></li>
+      <li><a href="#evolution"><span class="r-num">08</span><span class="r-name">Evolution</span></a></li>
+      <li><a href="#pivot"><span class="r-num">09</span><span class="r-name">The pivot</span></a></li>
+      <li><a href="#generative"><span class="r-num">10</span><span class="r-name">Generative EMR</span></a></li>
+      <li><a href="#personalisation"><span class="r-num">11</span><span class="r-name">Personalisation</span></a></li>
+      <li><a href="#product"><span class="r-num">12</span><span class="r-name">Final product</span></a></li>
+      <li><a href="#next"><span class="r-num">13</span><span class="r-name">Where it stands</span></a></li>
+      <li><a href="#learnings"><span class="r-num">14</span><span class="r-name">Key learnings</span></a></li>
+    </ol>
+  </nav>
   <button class="tb-index" type="button" aria-expanded="false" aria-controls="index-panel">
     <span class="tb-num" aria-hidden="true"></span>
     <span class="tb-name">Index</span>
@@ -33,45 +52,23 @@
 <nav class="index-panel" id="index-panel" aria-label="Sections" hidden>
   <ol>
     <li><a href="#overview"><span>01</span>Overview</a></li>
-    <li><a href="#role"><span>02</span>My role</a></li>
-    <li><a href="#problem"><span>03</span>The problem</a></li>
-    <li><a href="#existing"><span>04</span>The existing EMR</a></li>
-    <li><a href="#challenges"><span>05</span>Key challenges</a></li>
-    <li><a href="#approach"><span>06</span>Approach</a></li>
-    <li><a href="#landscape"><span>07</span>Competitive landscape</a></li>
-    <li><a href="#prototyping"><span>08</span>Prototyping</a></li>
-    <li><a href="#evolution"><span>09</span>Product evolution</a></li>
-    <li><a href="#pivot"><span>10</span>The pivot</a></li>
-    <li><a href="#generative"><span>11</span>Generative EMR</a></li>
-    <li><a href="#personalisation"><span>12</span>Personalisation</a></li>
-    <li><a href="#product"><span>13</span>Final product</a></li>
-    <li><a href="#next"><span>14</span>Where it stands</a></li>
-    <li><a href="#learnings"><span>15</span>Key learnings</a></li>
+    <li><a href="#problem"><span>02</span>The problem</a></li>
+    <li><a href="#existing"><span>03</span>The existing EMR</a></li>
+    <li><a href="#challenges"><span>04</span>Key challenges</a></li>
+    <li><a href="#approach"><span>05</span>Approach</a></li>
+    <li><a href="#landscape"><span>06</span>Competitive landscape</a></li>
+    <li><a href="#prototyping"><span>07</span>Prototyping</a></li>
+    <li><a href="#evolution"><span>08</span>Product evolution</a></li>
+    <li><a href="#pivot"><span>09</span>The pivot</a></li>
+    <li><a href="#generative"><span>10</span>Generative EMR</a></li>
+    <li><a href="#personalisation"><span>11</span>Personalisation</a></li>
+    <li><a href="#product"><span>12</span>Final product</a></li>
+    <li><a href="#next"><span>13</span>Where it stands</a></li>
+    <li><a href="#learnings"><span>14</span>Key learnings</a></li>
   </ol>
 </nav>
 
 
-<!-- Side rail: the section index, fixed in its own left margin from 1180px.
-     Appears once the hero has scrolled away. -->
-<nav class="rail" aria-label="Sections, side rail">
-  <ol>
-    <li><a href="#overview"><span class="r-num">01</span><span class="r-name">Overview</span></a></li>
-    <li><a href="#role"><span class="r-num">02</span><span class="r-name">My role</span></a></li>
-    <li><a href="#problem"><span class="r-num">03</span><span class="r-name">The problem</span></a></li>
-    <li><a href="#existing"><span class="r-num">04</span><span class="r-name">Existing EMR</span></a></li>
-    <li><a href="#challenges"><span class="r-num">05</span><span class="r-name">Challenges</span></a></li>
-    <li><a href="#approach"><span class="r-num">06</span><span class="r-name">Approach</span></a></li>
-    <li><a href="#landscape"><span class="r-num">07</span><span class="r-name">Landscape</span></a></li>
-    <li><a href="#prototyping"><span class="r-num">08</span><span class="r-name">Prototyping</span></a></li>
-    <li><a href="#evolution"><span class="r-num">09</span><span class="r-name">Evolution</span></a></li>
-    <li><a href="#pivot"><span class="r-num">10</span><span class="r-name">The pivot</span></a></li>
-    <li><a href="#generative"><span class="r-num">11</span><span class="r-name">Generative EMR</span></a></li>
-    <li><a href="#personalisation"><span class="r-num">12</span><span class="r-name">Personalisation</span></a></li>
-    <li><a href="#product"><span class="r-num">13</span><span class="r-name">Final product</span></a></li>
-    <li><a href="#next"><span class="r-num">14</span><span class="r-name">Where it stands</span></a></li>
-    <li><a href="#learnings"><span class="r-num">15</span><span class="r-name">Key learnings</span></a></li>
-  </ol>
-</nav>
 
 <!-- ================================================================ HERO -->
 <section class="hero dark" id="top" aria-label="Introduction">
@@ -139,43 +136,10 @@
 </section>
 
 
-<!-- ============================================================= MY ROLE -->
-<section id="role" data-title="My role">
-  <div class="wrap">
-    <p class="sec-idx" data-reveal><span>02</span>My role</p>
-    <h2 class="sec-title" data-reveal>Led end to end, from where AI earned its place to a running prototype.</h2>
-
-    <div class="role-grid" data-reveal>
-      <div class="role-card">
-        <p class="label">Ownership</p>
-        <p class="role-text">Scoping where generative AI earned its place, benchmarking, the interface, and the functional prototypes.</p>
-      </div>
-      <div class="role-card wide">
-        <p class="label">Contribution</p>
-        <ol class="role-list">
-          <li>Bounded three use cases against the existing fields.</li>
-          <li>Made the case to drop the standalone platform for a layer inside the record.</li>
-          <li>Took the proofs from Google AI Studio experiments to a running prototype.</li>
-        </ol>
-      </div>
-      <div class="role-card">
-        <p class="label">Team</p>
-        <p class="team"><span class="tn">2</span>product designers</p>
-        <p class="team"><span class="tn">3</span>product managers</p>
-      </div>
-      <div class="role-card">
-        <p class="label">Out of scope</p>
-        <p class="role-text">Engineering delivery, the model work, and integration with the full-scale doctor database.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 <!-- ============================================================= PROBLEM -->
 <section class="dark" id="problem" data-title="The problem">
   <div class="wrap">
-    <p class="sec-idx" data-reveal><span>03</span>The problem</p>
+    <p class="sec-idx" data-reveal><span>02</span>The problem</p>
     <h2 class="sec-title" data-reveal>The form was never the problem. The typing was.</h2>
 
     <p class="label" data-reveal>Clinical documentation today</p>
@@ -234,7 +198,7 @@
 <!-- ======================================================== EXISTING EMR -->
 <section id="existing" data-title="The existing EMR">
   <div class="wrap">
-    <p class="sec-idx" data-reveal><span>04</span>The existing EMR</p>
+    <p class="sec-idx" data-reveal><span>03</span>The existing EMR</p>
     <h2 class="sec-title" data-reveal>The EMR was not failing. It was succeeding hard enough to make its friction expensive.</h2>
   </div>
 
@@ -271,7 +235,7 @@
 <!-- ====================================================== KEY CHALLENGES -->
 <section id="challenges" data-title="Key challenges">
   <div class="wrap">
-    <p class="sec-idx" data-reveal><span>05</span>Key challenges</p>
+    <p class="sec-idx" data-reveal><span>04</span>Key challenges</p>
     <h2 class="sec-title" data-reveal>The goal was not to redesign the system, but to evolve it without disruption.</h2>
     <p class="sub" data-reveal>Three constraints, held at once: technical, behavioural, philosophical.</p>
 
@@ -307,7 +271,7 @@
 <!-- ============================================================ APPROACH -->
 <section id="approach" data-title="Approach">
   <div class="wrap">
-    <p class="sec-idx" data-reveal><span>06</span>Approach</p>
+    <p class="sec-idx" data-reveal><span>05</span>Approach</p>
     <h2 class="sec-title" data-reveal>Reduce ambiguity early. Validate feasibility fast. Decide from working prototypes.</h2>
 
     <ol class="steps" data-reveal>
@@ -340,7 +304,7 @@
 <!-- ================================================ COMPETITIVE LANDSCAPE -->
 <section id="landscape" data-title="Competitive landscape">
   <div class="wrap">
-    <p class="sec-idx" data-reveal><span>07</span>Competitive landscape</p>
+    <p class="sec-idx" data-reveal><span>06</span>Competitive landscape</p>
     <h2 class="sec-title" data-reveal>Most tools generate notes. This one generates the record itself.</h2>
 
     <div class="table-wrap" data-reveal>
@@ -371,7 +335,7 @@
 <!-- ========================================================= PROTOTYPING -->
 <section id="prototyping" data-title="Prototyping">
   <div class="wrap">
-    <p class="sec-idx" data-reveal><span>08</span>Prototyping</p>
+    <p class="sec-idx" data-reveal><span>07</span>Prototyping</p>
     <h2 class="sec-title" data-reveal>Working proofs, not static screens.</h2>
 
     <div class="split" data-reveal>
@@ -468,7 +432,7 @@
 <!-- ==================================================== PRODUCT EVOLUTION -->
 <section id="evolution" data-title="Product evolution">
   <div class="wrap">
-    <p class="sec-idx" data-reveal><span>09</span>Product evolution</p>
+    <p class="sec-idx" data-reveal><span>08</span>Product evolution</p>
     <div class="head-row">
       <h2 class="sec-title" data-reveal>Five stages, and the call that ended each.</h2>
       <div class="track-nav" data-reveal>
@@ -518,7 +482,7 @@
 <!-- ============================================================= PIVOT -->
 <section class="dark" id="pivot" data-title="The pivot">
   <div class="wrap">
-    <p class="sec-idx" data-reveal><span>10</span>The pivot</p>
+    <p class="sec-idx" data-reveal><span>09</span>The pivot</p>
     <h2 class="sec-title" data-reveal>The version that demoed best was the one we dropped.</h2>
 
     <div class="prose" data-reveal>
@@ -574,7 +538,7 @@
 <!-- ===================================================== GENERATIVE EMR -->
 <section id="generative" data-title="Generative EMR">
   <div class="wrap">
-    <p class="sec-idx" data-reveal><span>11</span>Generative EMR</p>
+    <p class="sec-idx" data-reveal><span>10</span>Generative EMR</p>
     <h2 class="sec-title xl" data-reveal>The record stays. The typing goes.</h2>
     <div class="prose" data-reveal>
       <p class="lead">
@@ -631,7 +595,7 @@
 <!-- ==================================================== PERSONALISATION -->
 <section id="personalisation" data-title="Personalisation">
   <div class="wrap">
-    <p class="sec-idx" data-reveal><span>12</span>Personalisation</p>
+    <p class="sec-idx" data-reveal><span>11</span>Personalisation</p>
     <h2 class="sec-title" data-reveal>Could the record arrive already shaped for the person opening it?</h2>
   </div>
 
@@ -676,7 +640,7 @@
 <!-- ====================================================== FINAL PRODUCT -->
 <section class="dark" id="product" data-title="Final product">
   <div class="wrap">
-    <p class="sec-idx" data-reveal><span>13</span>Final product</p>
+    <p class="sec-idx" data-reveal><span>12</span>Final product</p>
 
     <div class="sticky-split">
       <div class="ss-text">
@@ -738,7 +702,7 @@
 <!-- ===================================================== WHERE IT STANDS -->
 <section id="next" data-title="Where it stands">
   <div class="wrap">
-    <p class="sec-idx" data-reveal><span>14</span>Where it stands</p>
+    <p class="sec-idx" data-reveal><span>13</span>Where it stands</p>
     <h2 class="sec-title xl" data-reveal>The feature is live.</h2>
 
     <div class="split" data-reveal>
@@ -789,7 +753,7 @@
 <!-- ====================================================== KEY LEARNINGS -->
 <section id="learnings" data-title="Key learnings">
   <div class="wrap">
-    <p class="sec-idx" data-reveal><span>15</span>Key learnings</p>
+    <p class="sec-idx" data-reveal><span>14</span>Key learnings</p>
     <h2 class="sec-title" data-reveal>Three things this project settled about designing for AI.</h2>
 
     <ol class="learnings">

@@ -1422,6 +1422,70 @@ main > section:not(.dark) + section:not(.dark) { padding-top: 0; }
   color: var(--fg-3);
 }
 
+/* the live uptake: two figures, then one bar per month in ink. Ink, not
+   --machine: these are counts of consultations, not something the model
+   wrote. Every bar carries its value, so nothing depends on hover. */
+.uptake { margin-top: var(--stack-lg); }
+.uptake .stats.two { margin-top: 1.5rem; }
+
+.monthly {
+  --h: clamp(9rem, 18vw, 14rem);
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(0.5rem, 2vw, 1.25rem);
+  align-items: end;
+  max-width: var(--prose);
+  margin-top: var(--stack);
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--line);
+}
+.monthly li {
+  display: grid;
+  grid-template-areas: "val" "bar";
+  justify-items: stretch;
+  align-content: end;
+  gap: 0.5rem;
+  height: calc(var(--h) + 1.75rem);
+  position: relative;
+  padding-bottom: 0;
+}
+.m-val {
+  grid-area: val;
+  font-family: var(--display);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--fg);
+  font-variant-numeric: tabular-nums;
+}
+.m-bar {
+  grid-area: bar;
+  display: block;
+  height: calc(var(--h) * var(--v) / var(--max));
+  border-radius: 4px 4px 0 0;
+  background: var(--fg);
+  transition: opacity 0.25s var(--ease);
+}
+.m-name {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+.monthly + .aside { margin-top: 2.75rem; }
+/* hovering one month recedes the others */
+@media (hover: hover) {
+  .monthly:hover .m-bar { opacity: 0.35; }
+  .monthly li:hover .m-bar { opacity: 1; }
+}
+
 /* ------------------------------------------------------- 14 learnings */
 
 .learnings { margin-top: var(--stack); }
@@ -1822,66 +1886,184 @@ main > section:not(.dark) + section:not(.dark) { padding-top: 0; }
   .flow { scroll-padding-inline: var(--gutter); }
 }
 
-/* the live uptake: two figures, then one bar per month in ink. Ink, not
-   --machine: these are counts of consultations, not something the model
-   wrote. Every bar carries its value, so nothing depends on hover. */
-.uptake { margin-top: var(--stack-lg); }
-.uptake .stats.two { margin-top: 1.5rem; }
+/* =========================================================================
+   Navigation, as a floating overlay.
 
-.monthly {
-  --h: clamp(9rem, 18vw, 14rem);
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: clamp(0.5rem, 2vw, 1.25rem);
-  align-items: end;
-  max-width: var(--prose);
-  margin-top: var(--stack);
-  padding: 0;
-  list-style: none;
-  border-bottom: 1px solid var(--line);
+   This page takes the section index off the left margin and puts it in the
+   top bar, which becomes a glass pill centred at the top. Everything here is
+   an OVERRIDE of the shared block above, which stays byte-identical so the
+   Wellness Store and Generative EMR pages keep the side rail they have.
+   ========================================================================= */
+
+.topbar {
+  inset: 0.85rem auto auto 50%;
+  transform: translateX(-50%);
+  width: min(max-content, calc(100vw - 1.5rem));
+  min-width: 0;
+  height: auto;
+  gap: 0.6rem;
+  padding: 0.35rem 0.35rem 0.35rem 1.05rem;
+  border-radius: 999px;
 }
-.monthly li {
-  display: grid;
-  grid-template-areas: "val" "bar";
-  justify-items: stretch;
-  align-content: end;
-  gap: 0.5rem;
-  height: calc(var(--h) + 1.75rem);
-  position: relative;
-  padding-bottom: 0;
+
+/* the pill's own glass, on at the top of the page as well */
+.topbar::before {
+  border-radius: inherit;
+  background: rgba(243, 242, 238, 0.58);
+  -webkit-backdrop-filter: saturate(1.7) blur(20px);
+  backdrop-filter: saturate(1.7) blur(20px);
+  box-shadow:
+    inset 0 0 0 1px rgba(16, 17, 20, 0.10),
+    0 16px 40px -30px rgba(11, 14, 20, 0.45);
 }
-.m-val {
-  grid-area: val;
-  font-family: var(--display);
-  font-size: clamp(1.1rem, 2vw, 1.5rem);
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  color: var(--fg);
-  font-variant-numeric: tabular-nums;
+/* lifted off the night ground rather than matched to it, or the pill reads as
+   a hole in the page instead of a surface over it */
+.topbar[data-tone="dark"]::before {
+  background: rgba(26, 32, 42, 0.62);
+  box-shadow:
+    inset 0 0 0 1px rgba(243, 242, 238, 0.16),
+    0 16px 40px -30px rgba(0, 0, 0, 0.6);
 }
-.m-bar {
-  grid-area: bar;
-  display: block;
-  height: calc(var(--h) * var(--v) / var(--max));
-  border-radius: 4px 4px 0 0;
-  background: var(--fg);
-  transition: opacity 0.25s var(--ease);
+.topbar.at-top::before { opacity: 1; }
+
+.tb-mark { font-size: 0.9375rem; white-space: nowrap; }
+
+/* the progress hairline follows the pill's shape rather than the viewport */
+.tb-progress {
+  left: 1.05rem;
+  right: 1.05rem;
+  bottom: 0.28rem;
+  height: 2px;
+  border-radius: 2px;
+  overflow: hidden;
 }
-.m-name {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  margin-top: 0.6rem;
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--fg-3);
+
+/* ---- the section index, now a row inside the pill ---- */
+
+/* script.js adds .on to the rail once the hero is mostly out of view. That was
+   the cue for the old side rail to slide in from the left margin, and it
+   carries transform: translate(0, -50%). In the pill the rail is an ordinary
+   flex item, so that transform yanked the whole row up by half its height the
+   moment you scrolled past the hero — the nav looked correct at the top of the
+   page and broken everywhere else. .rail.on is specificity 0,2,0, so the plain
+   .rail override below could never win; this has to match it. */
+.rail.on {
+  position: static;
+  transform: none;
+  opacity: 1;
+  visibility: visible;
+  mix-blend-mode: normal;
 }
-.monthly + .aside { margin-top: 2.75rem; }
-/* hovering one month recedes the others */
-@media (hover: hover) {
-  .monthly:hover .m-bar { opacity: 0.35; }
-  .monthly li:hover .m-bar { opacity: 1; }
+
+.rail {
+  display: none;              /* the Index button carries it on narrow screens */
+  position: static;
+  width: auto;
+  color: inherit;
+  mix-blend-mode: normal;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: none;
 }
+
+@media (min-width: 1180px) {
+  :root { --rail: 0px; }      /* the left margin the old rail reserved comes back */
+
+  .rail { display: flex; align-items: center; min-width: 0; }
+  /* the shared rail is a vertical list, so its own list metrics come off */
+  .rail ol {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    /* a long index scrolls inside the pill rather than widening the page */
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .rail ol::-webkit-scrollbar { display: none; }
+  .rail li { flex: none; }
+  .rail li { margin: 0; padding: 0; flex: none; }
+
+  /* A number is always shown; the name unfurls for the section you are in,
+     and for whichever one you point at. Ten names at once would not fit a
+     pill, and ten bare numbers would be a riddle. */
+  .rail a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.42rem 0.6rem;
+    border-radius: 999px;
+    opacity: 0.5;
+    text-decoration: none;
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+  }
+  .rail a::after { display: none; }
+  .rail a:hover, .rail a:focus-visible { opacity: 1; }
+  .rail a[aria-current="true"] {
+    opacity: 1;
+    background: color-mix(in srgb, currentColor 12%, transparent);
+  }
+
+  .r-num { font-size: 0.66rem; opacity: 0.85; }
+  .r-name {
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    opacity: 0;
+    font-size: 0.76rem;
+    letter-spacing: -0.005em;
+    transition: max-width 0.4s var(--ease), opacity 0.25s ease;
+  }
+  .rail a[aria-current="true"] .r-name,
+  .rail a:hover .r-name,
+  .rail a:focus-visible .r-name { max-width: 9rem; opacity: 1; }
+
+  /* the row is the index at this width */
+  .tb-index { display: none; }
+}
+
+/* the shared block hands the rail over at 1180px; this page does it at 1180 */
+@media (min-width: 1180px) and (max-width: 1179.98px) {
+  .tb-index { display: none; }
+}
+
+/* ---- the index panel, as the overlay it now visually belongs to ---- */
+
+.index-panel {
+  top: calc(var(--topbar) + 0.9rem);
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  width: min(24rem, calc(100vw - 1.5rem));
+  padding: 0.45rem;
+  border: 0;
+  border-radius: 20px;
+  background: rgba(11, 14, 20, 0.6);
+  -webkit-backdrop-filter: saturate(1.7) blur(24px);
+  backdrop-filter: saturate(1.7) blur(24px);
+  box-shadow:
+    inset 0 0 0 1px rgba(243, 242, 238, 0.14),
+    0 30px 60px -24px rgba(0, 0, 0, 0.75);
+}
+.index-panel a { color: var(--n-ink); border-radius: 12px; }
+.index-panel a span { color: var(--n-ink-3); }
+.index-panel a:hover,
+.index-panel a[aria-current="true"] { background: rgba(243, 242, 238, 0.1); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .index-panel:not([hidden]) { animation: panel-in 0.3s var(--ease); }
+}
+@keyframes panel-in {
+  from { opacity: 0; transform: translate(-50%, -6px) scale(0.98); }
+  to   { opacity: 1; transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rail a, .r-name { transition: none; }
+}
+
+/* the pill is a fixed object now, so the hero starts below it */
+.hero { padding-top: calc(var(--topbar) + clamp(3rem, 9vh, 7rem)); }
