@@ -1821,3 +1821,67 @@ main > section:not(.dark) + section:not(.dark) { padding-top: 0; }
   /* snapping lands on the first frame, not the screen edge */
   .flow { scroll-padding-inline: var(--gutter); }
 }
+
+/* the live uptake: two figures, then one bar per month in ink. Ink, not
+   --machine: these are counts of consultations, not something the model
+   wrote. Every bar carries its value, so nothing depends on hover. */
+.uptake { margin-top: var(--stack-lg); }
+.uptake .stats.two { margin-top: 1.5rem; }
+
+.monthly {
+  --h: clamp(9rem, 18vw, 14rem);
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(0.5rem, 2vw, 1.25rem);
+  align-items: end;
+  max-width: var(--prose);
+  margin-top: var(--stack);
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--line);
+}
+.monthly li {
+  display: grid;
+  grid-template-areas: "val" "bar";
+  justify-items: stretch;
+  align-content: end;
+  gap: 0.5rem;
+  height: calc(var(--h) + 1.75rem);
+  position: relative;
+  padding-bottom: 0;
+}
+.m-val {
+  grid-area: val;
+  font-family: var(--display);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--fg);
+  font-variant-numeric: tabular-nums;
+}
+.m-bar {
+  grid-area: bar;
+  display: block;
+  height: calc(var(--h) * var(--v) / var(--max));
+  border-radius: 4px 4px 0 0;
+  background: var(--fg);
+  transition: opacity 0.25s var(--ease);
+}
+.m-name {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+.monthly + .aside { margin-top: 2.75rem; }
+/* hovering one month recedes the others */
+@media (hover: hover) {
+  .monthly:hover .m-bar { opacity: 0.35; }
+  .monthly li:hover .m-bar { opacity: 1; }
+}
