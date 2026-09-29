@@ -135,20 +135,27 @@
   /* ---- 1. The demonstration.
 
            The project's finding was that static screens could not show what
-           the product does, so the page runs it. The utterance and all five
-           values are verbatim from the design file.
+           the product does, so the page runs it, on a rebuild of the real
+           prescription screen. The dictation uses clinically plausible values;
+           the design file's own sample read 220 bpm and 100 C.
 
            It plays once and holds. Reduced motion gets the finished state
            immediately; the demo has to be fully readable as a still. ------ */
   (function () {
-    var UTTERANCE = '“120 bpm, 100 temperature has severe cough, take dolo for 5 days.”';
+    var UTTERANCE = '“Temperature 100.4, pulse 96, BP 128 by 84, SpO2 98. Dry cough and sore throat for three days. Start Dolo 650, one tablet twice a day after food, for five days.”';
 
+    /* in the order the assistant writes them: vitals, complaints, medication */
     var FILLS = [
-      { id: 'pulse',     value: '120 bpm' },
-      { id: 'temp',      value: '100 C' },
-      { id: 'complaint', value: 'Severe cough' },
-      { id: 'drug',      value: 'Dolo' },
-      { id: 'duration',  value: '5 days' }
+      { id: 'temp',     value: '100.4' },
+      { id: 'pulse',    value: '96' },
+      { id: 'bp',       value: '128/84' },
+      { id: 'spo2',     value: '98' },
+      { id: 'cc',       html: '<span class="emr-chip">Dry cough &middot; 3 days</span><span class="emr-chip">Sore throat &middot; 3 days</span>' },
+      { id: 'drug',     value: 'Dolo 650 (Paracetamol 650 mg)' },
+      { id: 'qty',      value: '10 tab' },
+      { id: 'freq',     value: '1-0-1' },
+      { id: 'duration', value: '5 days' },
+      { id: 'timing',   value: 'After food' }
     ];
 
     var demo    = document.getElementById('demo');
@@ -167,7 +174,8 @@
       var el = field(f.id);
       if (!el) return;
       el.classList.add('filled');
-      el.querySelector('.val').textContent = f.value;
+      var v = el.querySelector('.val');
+      if (f.html) v.innerHTML = f.html; else v.textContent = f.value;
     }
 
     function reset() {
@@ -181,7 +189,7 @@
         var el = field(f.id);
         if (!el) return;
         el.classList.remove('filled');
-        el.querySelector('.val').textContent = '—';
+        el.querySelector('.val').textContent = el.getAttribute('data-empty') || '—';
       });
     }
 
@@ -209,13 +217,13 @@
         if (i <= UTTERANCE.length) {
           said.textContent = UTTERANCE.slice(0, i);
           i++;
-          at(type, 26);
+          at(type, 22);
           return;
         }
         said.classList.remove('caret');
         at(function () { replied.hidden = false; }, 420);
-        FILLS.forEach(function (f, n) { at(function () { fill(f); }, 760 + n * 140); });
-        at(function () { running = false; }, 760 + FILLS.length * 140);
+        FILLS.forEach(function (f, n) { at(function () { fill(f); }, 760 + n * 180); });
+        at(function () { running = false; }, 760 + FILLS.length * 180);
       }
       at(type, 260);
     }

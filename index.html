@@ -357,70 +357,103 @@
     </div>
   </div>
 
-  <!-- The demonstration. The utterance and all five values are verbatim from the
-       design file. Ships in the settled state; the script clears and plays it. -->
+  <!-- The demonstration, rebuilt as the real prescription screen from the design
+       file: patient header, tabs, the form, and the assistant docked on the right.
+       The dictation uses clinically plausible values (the design file's own sample
+       read 220 bpm and 100 C). Ships settled; the script clears and plays it. -->
   <div class="wrap demo-stage" data-reveal>
-    <section class="demo" id="demo" aria-label="Chat-to-Form sync, demonstrated">
+    <section class="demo" id="demo" aria-label="Chat-to-Form sync, demonstrated on the prescription screen">
       <div class="demo-bar">
         <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span>Consultation &middot; Ishan Awasthi &middot; M/26</span>
+        <span>Generate Prescription &middot; Ishan Awasthi</span>
         <span class="demo-tag">Chat&#8209;to&#8209;Form sync</span>
       </div>
 
-      <div class="demo-grid">
-        <div class="demo-form">
-          <div class="f-group">
-            <p class="f-group-label">Examinations</p>
-            <div class="f-row">
-              <div class="field filled" data-field="pulse">
-                <span class="f-label">Pulse</span>
-                <div class="val">120 bpm</div>
+      <div class="emr">
+        <p class="emr-crumbs" aria-hidden="true"><b>Home</b> &rsaquo; Appointments &rsaquo; Generate Prescription</p>
+
+        <div class="emr-patient">
+          <span class="emr-avatar" aria-hidden="true">IA</span>
+          <div>
+            <p class="emr-name">Ishan Awasthi</p>
+            <p class="emr-sub">M / 26 yrs &middot; O +ve</p>
+          </div>
+          <span class="emr-icons" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="emr-visit">2nd Consultation<small>12 June 2026</small></span>
+        </div>
+
+        <div class="emr-tabs" aria-hidden="true">
+          <span class="on">Create New Prescription</span><span>Medical Background</span><span>Past Visits</span>
+        </div>
+
+        <div class="emr-body">
+          <div class="emr-form">
+            <div class="emr-card">
+              <p class="emr-h">Chief Complaints</p>
+              <div class="emr-cc filled" data-field="cc" data-empty="+ Add chief complaints">
+                <span class="val"><span class="emr-chip">Dry cough &middot; 3 days</span><span class="emr-chip">Sore throat &middot; 3 days</span></span>
               </div>
-              <div class="field filled" data-field="temp">
-                <span class="f-label">Temperature</span>
-                <div class="val">100 C</div>
+              <p class="emr-suggest" aria-hidden="true"><span>Cough</span><span>Fever</span><span>Cold</span><span>Headache</span><span>Body ache</span></p>
+            </div>
+
+            <div class="emr-card">
+              <p class="emr-h">Examinations <small>Patient BMI &ndash;</small></p>
+              <div class="emr-exam">
+                <div class="emr-in filled" data-field="pulse" data-empty="&ndash;"><span class="emr-l">Pulse</span><span class="emr-box"><span class="val">96</span><u>bpm</u></span></div>
+                <div class="emr-in filled" data-field="temp" data-empty="&ndash;"><span class="emr-l">Temperature</span><span class="emr-box"><span class="val">100.4</span><u>&deg;F</u></span></div>
+                <div class="emr-in"><span class="emr-l">Resp. rate</span><span class="emr-box"><span class="val">&ndash;</span><u>rpm</u></span></div>
+                <div class="emr-in filled" data-field="bp" data-empty="&ndash;"><span class="emr-l">Blood pressure</span><span class="emr-box"><span class="val">128/84</span><u>mmHg</u></span></div>
+                <div class="emr-in filled" data-field="spo2" data-empty="&ndash;"><span class="emr-l">SpO2</span><span class="emr-box"><span class="val">98</span><u>%</u></span></div>
+                <div class="emr-in"><span class="emr-l">Height</span><span class="emr-box"><span class="val">&ndash;</span><u>cm</u></span></div>
+                <div class="emr-in"><span class="emr-l">Weight</span><span class="emr-box"><span class="val">&ndash;</span><u>kg</u></span></div>
+              </div>
+            </div>
+
+            <div class="emr-card">
+              <p class="emr-h">Diagnosis</p>
+              <div class="emr-line"><span class="val">Add Diagnosis</span></div>
+            </div>
+
+            <div class="emr-card">
+              <p class="emr-h">Medication</p>
+              <div class="emr-med">
+                <div class="emr-mc wide filled" data-field="drug" data-empty="Add Medicine"><span class="emr-l">Prescribed Medicine</span><span class="val">Dolo 650 (Paracetamol 650 mg)</span></div>
+                <div class="emr-mc filled" data-field="qty" data-empty="&ndash;"><span class="emr-l">Quantity</span><span class="val">10 tab</span></div>
+                <div class="emr-mc filled" data-field="freq" data-empty="Eg. 1-0-1"><span class="emr-l">Frequency</span><span class="val">1-0-1</span></div>
+                <div class="emr-mc filled" data-field="duration" data-empty="Eg. 15 days"><span class="emr-l">Duration</span><span class="val">5 days</span></div>
+                <div class="emr-mc filled" data-field="timing" data-empty="Eg. After meal"><span class="emr-l">Timing</span><span class="val">After food</span></div>
               </div>
             </div>
           </div>
-          <div class="f-group">
-            <p class="f-group-label">Chief complaints</p>
-            <div class="f-row one">
-              <div class="field filled" data-field="complaint">
-                <span class="f-label">Complaint</span>
-                <div class="val">Severe cough</div>
+
+          <div class="emr-chat">
+            <p class="emr-chat-h"><span class="emr-bot" aria-hidden="true"></span>Ishan Awasthi</p>
+            <div class="emr-thread">
+              <div class="bubble hello">Hi Dr. Varun Khandelwal, I&rsquo;ve started your session for Ishan Awasthi. Try saying &ldquo;BP is 120/80&rdquo; to see the Chat-to-Form sync.</div>
+              <div class="bubble said" id="said">&ldquo;Temperature 100.4, pulse 96, BP 128 by 84, SpO2 98. Dry cough and sore throat for three days. Start Dolo 650, one tablet twice a day after food, for five days.&rdquo;</div>
+              <div class="bubble replied" id="replied">
+                Added data for these fields,<br>
+                Temperature &ndash; <b>100.4 &deg;F</b><br>
+                Pulse &ndash; <b>96 bpm</b><br>
+                Blood pressure &ndash; <b>128/84 mmHg</b><br>
+                SpO2 &ndash; <b>98%</b><br>
+                Chief complaints &ndash; <b>Dry cough, Sore throat (3 days)</b><br>
+                Medication &ndash; <b>Dolo 650, 1-0-1, after food, 5 days</b>
               </div>
             </div>
-          </div>
-          <div class="f-group">
-            <p class="f-group-label">Medication</p>
-            <div class="f-row">
-              <div class="field filled" data-field="drug">
-                <span class="f-label">Prescribed medicine</span>
-                <div class="val">Dolo</div>
-              </div>
-              <div class="field filled" data-field="duration">
-                <span class="f-label">Duration</span>
-                <div class="val">5 days</div>
-              </div>
-            </div>
+            <div class="emr-input" aria-hidden="true"><span>Type something here to get started</span><i class="mic"></i><i class="send"></i></div>
+            <p class="emr-disc">All outputs are intended to assist and should be reviewed before use.</p>
           </div>
         </div>
 
-        <div class="demo-chat">
-          <p class="chat-stamp">01 July &middot; 05:12 PM</p>
-          <div class="bubble said" id="said">&ldquo;120 bpm, 100 temperature has severe cough, take dolo for 5 days.&rdquo;</div>
-          <div class="bubble replied" id="replied">
-            Added data for these fields,<br>
-            Pulse - <b>120 bpm</b><br>
-            Temperature - <b>100 C</b><br>
-            Chief Complaints - <b>Severe cough</b><br>
-            Medication - <b>Dolo, Duration - 5 Days</b>
-          </div>
+        <div class="emr-actions" aria-hidden="true">
+          <span class="lk">Save Prescription as Template</span><span class="lk">Private Notes</span>
+          <span class="btn ghost">Preview Prescription</span><span class="btn">End Consultation</span>
         </div>
       </div>
 
       <div class="demo-foot">
-        <span>1 utterance &rarr; 4 fields &rarr; 3 sections</span>
+        <span>1 utterance &rarr; 10 fields &rarr; 3 sections</span>
         <button class="replay" id="replay" type="button">Replay</button>
       </div>
     </section>
@@ -724,27 +757,28 @@
     </div>
 
     <div class="uptake" data-reveal>
-      <p class="label">Consultations run on Generative EMR</p>
-      <div class="stats two">
-        <div class="stat">
-          <p class="stat-num"><span data-count="87">87</span></p>
-          <p class="stat-cap">consultations, April to September 2026.</p>
+      <p class="label">In use</p>
+      <div class="dash">
+        <div class="dash-head">
+          <p class="dash-title">Consultations on Generative EMR</p>
+          <p class="dash-range">Apr&ndash;Sep 2026</p>
         </div>
-        <div class="stat">
-          <p class="stat-num"><span data-count="26">26</span></p>
-          <p class="stat-cap">in the busiest month, June. Nearly three times April&rsquo;s 9.</p>
+        <div class="dash-body">
+          <dl class="dash-kpis">
+            <div><dt>Total</dt><dd><span data-count="87">87</span></dd></div>
+            <div><dt>Busiest month</dt><dd>26 <small>June</small></dd></div>
+          </dl>
+          <ol class="monthly" style="--max:30" aria-label="Consultations per month, April to September 2026">
+          <li style="--v:9"><span class="m-name">Apr<span class="sr-only"> 2026:</span></span> <span class="m-val">9<span class="sr-only"> consultations</span></span><span class="m-bar" aria-hidden="true"></span></li>
+          <li style="--v:18"><span class="m-name">May<span class="sr-only"> 2026:</span></span> <span class="m-val">18<span class="sr-only"> consultations</span></span><span class="m-bar" aria-hidden="true"></span></li>
+          <li style="--v:26"><span class="m-name">Jun<span class="sr-only"> 2026:</span></span> <span class="m-val">26<span class="sr-only"> consultations</span></span><span class="m-bar" aria-hidden="true"></span></li>
+          <li style="--v:21"><span class="m-name">Jul<span class="sr-only"> 2026:</span></span> <span class="m-val">21<span class="sr-only"> consultations</span></span><span class="m-bar" aria-hidden="true"></span></li>
+          <li style="--v:8"><span class="m-name">Aug<span class="sr-only"> 2026:</span></span> <span class="m-val">8<span class="sr-only"> consultations</span></span><span class="m-bar" aria-hidden="true"></span></li>
+          <li style="--v:5"><span class="m-name">Sep<span class="sr-only"> 2026:</span></span> <span class="m-val">5<span class="sr-only"> consultations</span></span><span class="m-bar" aria-hidden="true"></span></li>
+          </ol>
         </div>
+        <p class="dash-foot">From the product dashboard, 23 September 2026. September counts to the 23rd.</p>
       </div>
-
-      <ol class="monthly" style="--max:26" aria-label="Consultations per month, April to September 2026">
-        <li style="--v:9"><span class="m-name">Apr<span class="sr-only"> 2026:</span></span> <span class="m-val">9<span class="sr-only"> consultations</span></span><span class="m-bar" aria-hidden="true"></span></li>
-        <li style="--v:18"><span class="m-name">May<span class="sr-only"> 2026:</span></span> <span class="m-val">18<span class="sr-only"> consultations</span></span><span class="m-bar" aria-hidden="true"></span></li>
-        <li style="--v:26"><span class="m-name">Jun<span class="sr-only"> 2026:</span></span> <span class="m-val">26<span class="sr-only"> consultations</span></span><span class="m-bar" aria-hidden="true"></span></li>
-        <li style="--v:21"><span class="m-name">Jul<span class="sr-only"> 2026:</span></span> <span class="m-val">21<span class="sr-only"> consultations</span></span><span class="m-bar" aria-hidden="true"></span></li>
-        <li style="--v:8"><span class="m-name">Aug<span class="sr-only"> 2026:</span></span> <span class="m-val">8<span class="sr-only"> consultations</span></span><span class="m-bar" aria-hidden="true"></span></li>
-        <li style="--v:5"><span class="m-name">Sep<span class="sr-only"> 2026:</span></span> <span class="m-val">5<span class="sr-only"> consultations</span></span><span class="m-bar" aria-hidden="true"></span></li>
-      </ol>
-      <p class="aside">September counts to the 23rd.</p>
     </div>
   </div>
 </section>
