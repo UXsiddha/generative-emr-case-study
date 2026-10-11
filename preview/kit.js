@@ -102,7 +102,7 @@
           gsap.fromTo(img, { clipPath: 'inset(16% 10% 16% 10% round ' + r + ')' }, { clipPath: 'inset(0% 0% 0% 0% round ' + r + ')', ease: 'none',
             scrollTrigger: { trigger: box, start: 'top 90%', end: 'top 35%', scrub: 0.5 } });
           /* the figure drifts, not the image, so a caption stays with its screen */
-          if (c.wide) gsap.to(img.closest('.scr'), { y: [-10, -28, -16, -22][i % 4], ease: 'none', scrollTrigger: { trigger: box, start: 'top bottom', end: 'bottom top', scrub: true } });
+          if (c.wide && !box.hasAttribute('data-still')) gsap.to(img.closest('.scr'), { y: [-10, -28, -16, -22][i % 4], ease: 'none', scrollTrigger: { trigger: box, start: 'top bottom', end: 'bottom top', scrub: true } });
         });
       });
 
