@@ -22,17 +22,17 @@
 <header class="bar" aria-label="Case study">
   <a class="bar-id" href="https://uxsiddha.github.io/home"><b>SP</b><span>Sathyasiddha Pattanaik</span></a>
   <nav class="bar-nav" aria-label="Chapters">
-    <a class="slink" href="#problem"><sup>01/</sup>Problem</a><a class="slink" href="#prototyping"><sup>02/</sup>Prototype</a><a class="slink" href="#pivot"><sup>03/</sup>Pivot</a><a class="slink" href="#generative"><sup>04/</sup>The layer</a><a class="slink" href="#product"><sup>05/</sup>Product</a><a class="slink" href="#learnings"><sup>06/</sup>Learnings</a>
+    <a class="slink" href="#problem"><sup>01/</sup>Problem</a><a class="slink" href="#evolution"><sup>02/</sup>Pivot</a><a class="slink" href="#prototype"><sup>03/</sup>Prototype</a><a class="slink" href="#decisions"><sup>04/</sup>Decisions</a><a class="slink" href="#live"><sup>05/</sup>Live</a><a class="slink" href="#learnings"><sup>06/</sup>Learnings</a>
   </nav>
-  <a class="btn btn-solid" href="#demo-stage">See it fill</a>
+  <a class="btn btn-solid" href="#prototype">See it fill</a>
   <span class="bar-progress" aria-hidden="true"><i></i></span>
 </header>
 
 <main id="main">
 
-<!-- ================================================= 01 HERO -> 02 WHAT I BUILT
-     One pinned stage, one screen. The headline gives way to the product as
-     the record crosses the stage; the screen steps through a consultation. -->
+<!-- ================================================= 01 HERO AND PRODUCT OVERVIEW
+     One pinned stage. The record with the assistant docked beside it is the
+     hero; as it crosses the stage, the overview takes over. -->
 <section class="act-a pin" id="top" data-pin data-span="0.7" aria-labelledby="hero-h">
   <div class="pin-stage">
     <div class="a-surface" aria-hidden="true"></div>
@@ -44,7 +44,7 @@
         <dl class="cols">
           <div><dt>Role</dt><dd>Led the project</dd></div>
           <div><dt>Team</dt><dd>2 product designers, 3 product managers</dd></div>
-          <div><dt>Status</dt><dd>Live</dd></div>
+          <div><dt>Timeline</dt><dd>3 months, 2025 to 2026 &middot; <span class="live-tag">Live</span></dd></div>
         </dl>
       </div>
       <div class="a-phone">
@@ -52,58 +52,59 @@
           <div class="swap">
             <img class="is-on" src="public/cover/generative-emr-hero.webp" width="1716" height="1124" alt="The prescription record for patient Ishan Awasthi, with the assistant docked at the right, welcoming the doctor and listing what it can do." fetchpriority="high" decoding="async">
             <img src="public/screens/web/04-ongoing-conversation.webp" width="1480" height="944" alt="An ongoing consultation: the prescription record on the left, and on the right the assistant thread where the doctor dictated vitals and the assistant listed the fields it filled." loading="lazy" decoding="async">
-            <img src="public/screens/web/profile-with-assistant.webp" width="1600" height="1397" alt="The patient profile for Ishaan Awasthi, with medical background, vitals and payment, and the assistant open at the right." loading="lazy" decoding="async">
           </div>
         </figure>
+        <p class="frame-key" aria-hidden="true"><span class="k-rec">The record, unchanged</span><span class="k-ai">The assistant, docked beside it</span></p>
       </div>
       <div class="a-built" id="built">
-        <div class="mark"><span>02</span><span>What I built</span><span>3 months, 2025 to 2026</span></div>
+        <div class="mark"><span>01</span><span>Product overview</span></div>
         <h2 class="h-sec" id="built-h" tabindex="-1">What if the EMR could listen to the doctor, and fill itself in?</h2>
         <p class="body">A layer inside Bajaj Finserv Health&rsquo;s existing record. Doctors type or speak in natural language, and the system writes the structured record in real time. It changes nothing about the record, and everything about filling it in.</p>
         <ol class="asks is-auto" id="built-asks" aria-label="The screens the record is showing">
           <li><span>Session</span>The assistant docked beside the record</li>
           <li><span>Consultation</span>Vitals dictated, fields filled</li>
-          <li><span>Profile</span>The patient profile, assistant open</li>
         </ol>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================================================= 03 THE PROBLEM -->
+<!-- ================================================= 02 THE PROBLEM -->
 <section class="sec problem" id="problem" aria-labelledby="problem-h">
   <div class="wrap">
-    <div class="mark"><span>03</span><span>The problem</span></div>
+    <div class="mark"><span>02</span><span>The problem</span></div>
     <h2 id="problem-h" class="h-statement rv">The form was never the problem. <em>The typing was.</em></h2>
-    <p class="kicker sec-gap">Clinical documentation today</p>
-    <dl class="figs figs-cap">
-      <div><dt>Per patient</dt><dd><small class="pre">~</small><span data-count="36">36</span><small>min</small></dd><p>on EHR tasks, often after hours.</p></div>
-      <div><dt>For every hour of care</dt><dd><span data-count="2">2</span><small>hrs</small></dd><p>of clerical work for every hour of direct patient care.</p></div>
-      <div><dt>Of the workday</dt><dd><small class="pre">up to</small>&frac12;</dd><p>Up to half of a clinician&rsquo;s workday goes to EHRs and desk work.</p></div>
-    </dl>
-    <p class="fine">Many physicians report documentation as a core driver of burnout and reduced job satisfaction.</p>
-    <div class="timeuse-block sec-gap">
-      <p class="kicker">How a clinician&rsquo;s time is actually spent</p>
-      <div class="timeuse" role="img" aria-label="45% EMR, 30% patient, 25% admin.">
-        <div class="tu-seg" style="--p:45"><p class="tu-num"><span data-count="45">45</span>%</p><div class="tu-track"><span class="tu-bar"></span></div><p class="tu-label">EMR</p></div>
-        <div class="tu-seg" style="--p:30"><p class="tu-num"><span data-count="30">30</span>%</p><div class="tu-track"><span class="tu-bar"></span></div><p class="tu-label">Patient</p></div>
-        <div class="tu-seg" style="--p:25"><p class="tu-num"><span data-count="25">25</span>%</p><div class="tu-track"><span class="tu-bar"></span></div><p class="tu-label">Admin</p></div>
-      </div>
-      <p class="tu-read">More of the day goes to the record than to the patient.</p>
-    </div>
     <div class="split2 sec-gap">
       <p class="pull">The issue was the process of manual form filling, not the forms themselves.</p>
-      <p class="body">The record&rsquo;s structure was not broken. The fields were the right fields, and no doctor was asking for a different form. What they could not absorb was filling one in by hand, between patients, all day.</p>
+      <p class="body">Traditional EMRs make clinicians enter structured data into rigid fields, during or after the visit. The record&rsquo;s structure was not broken: the fields were the right fields, and no doctor was asking for a different form. What they could not absorb was filling one in by hand, between patients, all day.</p>
+    </div>
+    <div class="evidence sec-gap">
+      <p class="kicker"><span class="tag-src">Industry evidence</span> Clinical documentation today</p>
+      <dl class="figs figs-cap">
+        <div><dt>Per patient</dt><dd><small class="pre">~</small><span data-count="36">36</span><small>min</small></dd><p>on EHR tasks, often after hours.</p></div>
+        <div><dt>For every hour of care</dt><dd><span data-count="2">2</span><small>hrs</small></dd><p>of clerical work for every hour of direct patient care.</p></div>
+        <div><dt>Of the workday</dt><dd><small class="pre">up to</small>&frac12;</dd><p>Up to half of a clinician&rsquo;s workday goes to EHRs and desk work.</p></div>
+      </dl>
+      <div class="timeuse-block sec-gap">
+        <p class="kicker">How a clinician&rsquo;s time is actually spent</p>
+        <div class="timeuse" role="img" aria-label="45% EMR, 30% patient, 25% admin.">
+          <div class="tu-seg" style="--p:45"><p class="tu-num"><span data-count="45">45</span>%</p><div class="tu-track"><span class="tu-bar"></span></div><p class="tu-label">EMR</p></div>
+          <div class="tu-seg" style="--p:30"><p class="tu-num"><span data-count="30">30</span>%</p><div class="tu-track"><span class="tu-bar"></span></div><p class="tu-label">Patient</p></div>
+          <div class="tu-seg" style="--p:25"><p class="tu-num"><span data-count="25">25</span>%</p><div class="tu-track"><span class="tu-bar"></span></div><p class="tu-label">Admin</p></div>
+        </div>
+        <p class="tu-read">More of the day goes to the record than to the patient.</p>
+      </div>
+      <p class="fine">Many physicians report documentation as a core driver of burnout and reduced job satisfaction.</p>
     </div>
   </div>
 </section>
 
-<!-- filling by hand collapses into one spoken sentence -->
+<!-- the comparison: filling by hand collapses into one spoken sentence -->
 <section class="act-c pin" id="collapse" data-pin data-span="0.75" aria-labelledby="collapse-h">
   <div class="pin-stage">
     <div class="wrap c-wrap">
       <div class="c-head">
-        <p class="kicker"><span class="c-l0">Filling the record by hand</span><span class="c-l1">With the generative layer</span></p>
+        <p class="kicker"><span class="c-l0">The manual workflow</span><span class="c-l1">The generative workflow</span></p>
         <h2 id="collapse-h" class="h-sec">Rigid fields, typed in by hand. <em>Or one sentence, spoken once.</em></h2>
       </div>
       <div class="c-flow">
@@ -123,11 +124,10 @@
   </div>
 </section>
 
-<!-- ================================================= 04 THE EXISTING EMR -->
-<section class="sec" id="existing" aria-labelledby="existing-h">
+<section class="sec existing" id="existing" aria-labelledby="existing-h">
   <div class="wrap">
-    <div class="mark"><span>04</span><span>The existing EMR</span></div>
-    <h2 id="existing-h" class="h-statement rv">The EMR was not failing. <em>It was succeeding hard enough to make its friction expensive.</em></h2>
+    <p class="kicker"><span class="tag-own">The existing EMR&rsquo;s own history</span></p>
+    <h2 id="existing-h" class="h-sec rv">The EMR was not failing. <em>It was succeeding hard enough to make its friction expensive.</em></h2>
   </div>
   <figure class="shot open"><img src="public/screens/web/existing-record.webp" width="2000" height="1201" alt="The existing prescription record at Bajaj Finserv Health: patient header, EMR templates, chief complaints, examinations and the footer actions." loading="lazy" decoding="async"><figcaption><span>Fig. 01</span>The prescription record doctors already used. The round button at the bottom right is the assistant&rsquo;s entry point.</figcaption></figure>
   <div class="wrap">
@@ -139,56 +139,125 @@
   </div>
 </section>
 
-<!-- ================================================= 05 CONSTRAINTS AND APPROACH -->
-<section class="sec" id="challenges" aria-labelledby="ch-h">
+<!-- ================================================= 03 CONSTRAINTS AND PRINCIPLES -->
+<section class="sec" id="constraints" aria-labelledby="ch-h">
   <div class="wrap">
-    <div class="mark"><span>05</span><span>Constraints and approach</span></div>
+    <div class="mark"><span>03</span><span>Constraints and design principles</span></div>
     <h2 id="ch-h" class="h-statement rv">The goal was not to redesign the system, <em>but to evolve it without disruption.</em></h2>
-    <p class="body">Three constraints, held at once: technical, behavioural, philosophical.</p>
-    <dl class="cols cols-3 facts">
-      <div><dt>01 &middot; An existing technical system</dt><dd>Not greenfield. Backend, data models and workflows already in production, built in-house, so a drawing that could not be built was found out immediately.</dd></div>
-      <div><dt>02 &middot; High-intensity users</dt><dd>Doctors work under time pressure and resist anything that disturbs a known workflow. Small friction points cause outright rejection, not workarounds.</dd></div>
-      <div><dt>03 &middot; A core that had to stay put</dt><dd>Improve the record without changing what the record is. Rewriting the structure would solve a problem nobody had, and create one everybody would feel.</dd></div>
-    </dl>
-    <p class="caveat">The constraint was agreed before any design decision was made. It ruled out the ambitious version of the idea in advance, and gave the team something to fail its own work against later. Which is exactly what happened.</p>
+    <div class="principle sec-gap">
+      <p class="kicker">The principle, agreed before any design decision</p>
+      <p class="principle-t">Improve the record without changing what the record is.</p>
+    </div>
+    <ol class="cframe">
+      <li>
+        <p class="cf-n">01 &middot; Technical</p>
+        <h3>An existing technical system</h3>
+        <p>Not greenfield. Backend, data models and workflows already in production, built in-house, so a drawing that could not be built was found out immediately.</p>
+        <p class="cf-led"><span>Led to</span>Working prototypes, not static screens.</p>
+      </li>
+      <li>
+        <p class="cf-n">02 &middot; Behavioural</p>
+        <h3>High-intensity users</h3>
+        <p>Doctors work under time pressure and resist anything that disturbs a known workflow. Small friction points cause outright rejection, not workarounds.</p>
+        <p class="cf-led"><span>Led to</span>An assistant that docks alongside; the doctor never opens a field to fill one.</p>
+      </li>
+      <li>
+        <p class="cf-n">03 &middot; Philosophical</p>
+        <h3>A core that had to stay put</h3>
+        <p>Rewriting the structure would solve a problem nobody had, and create one everybody would feel.</p>
+        <p class="cf-led"><span>Led to</span>The pivot away from a standalone platform.</p>
+      </li>
+    </ol>
+    <p class="caveat">The constraint ruled out the ambitious version of the idea in advance, and gave the team something to fail its own work against later. Which is exactly what happened.</p>
+
+    <div class="split2 sec-gap">
+      <div>
+        <h3 class="h-sub">Reduce ambiguity early. Validate feasibility fast. Decide from working prototypes.</h3>
+        <ol class="loop loop-notes" aria-label="The approach">
+          <li><b>Hypothesis</b><small>AI can reduce documentation effort.</small></li>
+          <li><b>Map</b><small>The existing fields and workflows, and every moment a doctor repeated information or switched context.</small></li>
+          <li><b>Bound</b><small>Those moments, translated into clear, bounded AI use cases.</small></li>
+        </ol>
+      </div>
+      <div>
+        <p class="kicker">Three use cases</p>
+        <ol class="rows">
+          <li><span class="k">01</span><span class="v">Auto-prefill structured fields from typed or spoken input.</span></li>
+          <li><span class="k">02</span><span class="v">Detect when a new symptom or diagnosis needs a new record component.</span></li>
+          <li><span class="k">03</span><span class="v">Read a doctor&rsquo;s history and background to produce better templates.</span></li>
+        </ol>
+      </div>
+    </div>
 
     <div class="sec-gap">
-      <h3 class="h-sub">Reduce ambiguity early. Validate feasibility fast. Decide from working prototypes.</h3>
-      <ol class="loop loop-notes" aria-label="The approach">
-        <li><b>Hypothesis</b><small>AI can reduce documentation effort.</small></li>
-        <li><b>Map</b><small>The existing fields and workflows, and every moment a doctor repeated information or switched context.</small></li>
-        <li><b>Bound</b><small>Those moments, translated into clear, bounded AI use cases.</small></li>
+      <h3 class="h-sub">Most tools generate notes. <em class="dim">This one generates the record itself.</em></h3>
+      <ol class="disc land">
+        <li class="disc-h" aria-hidden="true"><span>Category &middot; examples</span><span>Strength</span><span>Gap</span></li>
+        <li><span><b>Traditional EMRs</b> Epic, Cerner</span><span>Trusted, compliant</span><span>Manual, rigid, time-heavy</span></li>
+        <li><span><b>Enterprise AI scribes</b> Nuance DAX</span><span>Deep integration, scale</span><span>Static output, limited adaptability</span></li>
+        <li><span><b>AI scribe startups</b> Abridge, Suki, Augmedix</span><span>Fast, ambient capture</span><span>Note-focused, not record-native</span></li>
+        <li><span><b>Generic AI copilots</b> LLM-based tools</span><span>Strong language models</span><span>No clinical structure</span></li>
       </ol>
-      <p class="kicker sec-gap">Three use cases</p>
-      <ol class="rows">
-        <li><span class="k">01</span><span class="v">Auto-prefill structured fields from typed or spoken input.</span></li>
-        <li><span class="k">02</span><span class="v">Detect when a new symptom or diagnosis needs a new record component.</span></li>
-        <li><span class="k">03</span><span class="v">Read a doctor&rsquo;s history and background to produce better templates.</span></li>
-      </ol>
+      <p class="body">A note still has to be read by a human and retyped into fields. That is the exact work we were removing, relocated rather than eliminated.</p>
     </div>
   </div>
 </section>
 
-<!-- ================================================= 06 COMPETITIVE LANDSCAPE -->
-<section class="sec" id="landscape" aria-labelledby="land-h">
+<!-- ================================================= 04 EXPLORATION, EVOLUTION AND PIVOT -->
+<section class="sec pivot" id="evolution" aria-labelledby="evo-h">
   <div class="wrap">
-    <div class="mark"><span>06</span><span>Competitive landscape</span></div>
-    <h2 id="land-h" class="h-sec rv">Most tools generate notes. <em>This one generates the record itself.</em></h2>
-    <ol class="disc land">
-      <li class="disc-h" aria-hidden="true"><span>Category &middot; examples</span><span>Strength</span><span>Gap</span></li>
-      <li><span><b>Traditional EMRs</b> Epic, Cerner</span><span>Trusted, compliant</span><span>Manual, rigid, time-heavy</span></li>
-      <li><span><b>Enterprise AI scribes</b> Nuance DAX</span><span>Deep integration, scale</span><span>Static output, limited adaptability</span></li>
-      <li><span><b>AI scribe startups</b> Abridge, Suki, Augmedix</span><span>Fast, ambient capture</span><span>Note-focused, not record-native</span></li>
-      <li><span><b>Generic AI copilots</b> LLM-based tools</span><span>Strong language models</span><span>No clinical structure</span></li>
+    <div class="mark"><span>04</span><span>Exploration, evolution and pivot</span></div>
+    <h2 id="evo-h" class="h-statement rv">The version that demoed best <em>was the one we dropped.</em></h2>
+    <ol class="loop timeline" aria-label="Five stages of the design">
+      <li><b>Whiteboarding</b><small>Stage 1 &middot; Explored</small></li>
+      <li><b>A standalone platform</b><small>Stage 2 &middot; Explored</small></li>
+      <li class="t-drop"><b>The reversal</b><small>Stage 3 &middot; Dropped</small></li>
+      <li class="t-built"><b>The generative layer</b><small>Stage 4 &middot; Built</small></li>
+      <li class="t-built"><b>Personalisation</b><small>Stage 5 &middot; Built</small></li>
     </ol>
-    <p class="body">A note still has to be read by a human and retyped into fields. That is the exact work we were removing, relocated rather than eliminated.</p>
+  </div>
+  <div class="screens stages" data-still>
+    <figure class="scr"><img src="public/screens/web/stage-1-whiteboard.webp" srcset="public/screens/web/stage-1-whiteboard.webp 640w, public/screens/web/stage-1-whiteboard-lg.webp 960w" sizes="(max-width: 900px) 100vw, 580px" width="640" height="480" alt="A whiteboard covered in hand-drawn wireframes: chat, patient list, calendar, settings." loading="lazy" decoding="async"><figcaption><span>Stage 1 &middot; Explored</span><b>Whiteboarding</b>Chat as the entry point, carrying over the navigation doctors already knew.</figcaption></figure>
+    <figure class="scr"><img src="public/screens/web/stage-2-platform.webp" srcset="public/screens/web/stage-2-platform.webp 640w, public/screens/web/stage-2-platform-lg.webp 1400w" sizes="(max-width: 900px) 100vw, 580px" width="640" height="480" alt="The standalone platform's patient overview: vitals, medications, history and allergies as cards above a Start Consultation button." loading="lazy" decoding="async"><figcaption><span>Stage 2 &middot; Explored</span><b>A standalone platform</b>Patient overview, detailed record, consultation start. The version that demoed best.</figcaption></figure>
+  </div>
+  <div class="wrap">
+    <div class="pivot-why">
+      <div>
+        <p class="kicker">The first answer</p>
+        <p class="pull">A separate, chat-first application on the same database, with navigation tabs echoing the record&rsquo;s original left panel.</p>
+        <p class="body">Whiteboarded, then drawn as a full journey covering patient overview, detailed record and consultation start. It looked like the confident version of the idea.</p>
+      </div>
+      <div class="why-box">
+        <p class="kicker">Why it was dropped</p>
+        <p class="why-t">It partially conflicted with our original principle of improving the system without altering its core, and raised legitimate questions around feasibility.</p>
+        <p class="body-sm">Note what that does <em>not</em> say. Not that it was wrong, or that users rejected it. It was judged insufficiently aligned with a principle committed to in advance.</p>
+      </div>
+    </div>
+    <figure class="shot dropped-one open"><img src="public/screens/web/stage-3-dropped-lg.webp" width="1400" height="1237" alt="The standalone platform's detailed patient record with a patient timeline, the direction that was dropped." loading="lazy" decoding="async"><figcaption><span>Stage 3 &middot; Dropped</span>The reversal: a separate platform replaces the system rather than evolving it.</figcaption></figure>
+    <div class="fork sec-gap" data-trace role="img" aria-label="Two directions from one problem. The standalone platform stops at the constraint; the layer inside the existing record continues, and is live.">
+      <p class="fork-origin"><span class="f-dot"></span>One problem</p>
+      <svg class="fork-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <path class="f-dash" pathLength="1" d="M0 50 C 50 50, 50 25, 100 25" vector-effect="non-scaling-stroke"/>
+        <path class="f-solid" pathLength="1" d="M0 50 C 50 50, 50 75, 100 75" vector-effect="non-scaling-stroke"/>
+      </svg>
+      <div class="fork-lanes">
+        <p class="lane is-dropped"><span class="lane-t">A new chat-first platform</span><i></i><span class="lane-end">Stops at the constraint</span></p>
+        <p class="lane is-kept"><span class="lane-t">A layer inside the record that already exists</span><i></i><span class="lane-end">Live</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="screens stages stages-2" data-still>
+    <figure class="scr is-built"><img src="public/screens/web/stage-4-layer.webp" width="640" height="480" alt="The existing prescription screen with the assistant docked at the right." loading="lazy" decoding="async"><figcaption><span>Stage 4 &middot; Built</span><b>The generative layer</b>Voice and chat capture fill the form; smart fill adds what nobody asked for.</figcaption></figure>
+    <figure class="scr is-built"><img src="public/screens/web/stage-5-personal.webp" srcset="public/screens/web/stage-5-personal.webp 640w, public/screens/web/stage-5-personal-lg.webp 2000w" sizes="(max-width: 900px) 100vw, 580px" width="640" height="480" alt="A generated cardiology template: cardiac risk profile and ejection fraction blocks, with the assistant explaining what it pre-configured." loading="lazy" decoding="async"><figcaption><span>Stage 5 &middot; Built</span><b>Personalisation</b>Onboarding reads the doctor&rsquo;s background and generates an editable template.</figcaption></figure>
   </div>
 </section>
 
-<!-- ================================================= 07 PROTOTYPING: the live demo -->
-<section class="sec" id="prototyping" aria-labelledby="proto-h">
+<div class="band" aria-hidden="true"><div class="band-track"><span>Doctors speak, and the form writes itself</span><i></i><span>Doctors speak, and the form writes itself</span><i></i><span>Doctors speak, and the form writes itself</span><i></i><span>Doctors speak, and the form writes itself</span><i></i></div></div>
+
+<!-- ================================================= 05 THE FUNCTIONAL PROTOTYPE -->
+<section class="sec" id="prototype" aria-labelledby="proto-h">
   <div class="wrap">
-    <div class="mark"><span>07</span><span>Prototyping</span></div>
+    <div class="mark"><span>05</span><span>Functional prototype</span></div>
     <h2 id="proto-h" class="h-statement rv">Working proofs, <em>not static screens.</em></h2>
     <div class="split2 sec-gap">
       <div><p class="pull">Traditional UI screens failed to demonstrate intelligence and adaptiveness, so we shifted to functional proofs of concept.</p><p class="body">Real-time understanding and a record that fills itself could not be shown in a mockup. The prototype is how the idea was tested, and how it was sold internally.</p></div>
@@ -197,6 +266,12 @@
         <div><dt>Claude + Cursor</dt><dd>A functioning prototype that behaved like the real record.</dd></div>
       </dl>
     </div>
+    <ol class="loop proto-steps" id="proto-steps" aria-label="What happens in the demonstration">
+      <li><b>The doctor speaks</b><small>One natural sentence</small></li>
+      <li><b>Fields fill</b><small>10 fields across 3 sections</small></li>
+      <li><b>It reads back</b><small>What it added, field by field</small></li>
+      <li><b>The doctor reviews</b><small>Reviewed before use</small></li>
+    </ol>
   </div>
   <!-- The demonstration, rebuilt as the real prescription screen from the design file. The dictation uses clinically plausible values (the design file's own sample read 220 bpm and 100 C). Ships settled; the script clears and plays it. -->
   <div class="wrap demo-stage" id="demo-stage">
@@ -250,87 +325,83 @@
   </div>
 </section>
 
-<div class="band" aria-hidden="true"><div class="band-track"><span>Doctors speak, and the form writes itself</span><i></i><span>Doctors speak, and the form writes itself</span><i></i><span>Doctors speak, and the form writes itself</span><i></i><span>Doctors speak, and the form writes itself</span><i></i></div></div>
-
-<!-- ================================================= 08 PRODUCT EVOLUTION -->
-<section class="sec" id="evolution" aria-labelledby="evo-h">
-  <div class="wrap">
-    <div class="mark"><span>08</span><span>Product evolution</span></div>
-    <h2 id="evo-h" class="h-statement rv">Five stages, <em>and the call that ended each.</em></h2>
-  </div>
-  <div class="screens stages">
-    <figure class="scr"><img src="public/screens/web/stage-1-whiteboard.webp" srcset="public/screens/web/stage-1-whiteboard.webp 640w, public/screens/web/stage-1-whiteboard-lg.webp 960w" sizes="(max-width: 900px) 100vw, 580px" width="640" height="480" alt="A whiteboard covered in hand-drawn wireframes: chat, patient list, calendar, settings." loading="lazy" decoding="async"><figcaption><span>Stage 1 &middot; Explored</span><b>Whiteboarding</b>Chat as the entry point, carrying over the navigation doctors already knew.</figcaption></figure>
-    <figure class="scr"><img src="public/screens/web/stage-2-platform.webp" srcset="public/screens/web/stage-2-platform.webp 640w, public/screens/web/stage-2-platform-lg.webp 1400w" sizes="(max-width: 900px) 100vw, 580px" width="640" height="480" alt="The standalone platform's patient overview: vitals, medications, history and allergies as cards above a Start Consultation button." loading="lazy" decoding="async"><figcaption><span>Stage 2 &middot; Explored</span><b>A standalone platform</b>Patient overview, detailed record, consultation start. The version that demoed best.</figcaption></figure>
-    <figure class="scr is-dropped"><img src="public/screens/web/stage-3-dropped.webp" srcset="public/screens/web/stage-3-dropped.webp 640w, public/screens/web/stage-3-dropped-lg.webp 1400w" sizes="(max-width: 900px) 100vw, 580px" width="640" height="480" alt="The standalone platform's detailed patient record, the direction that was dropped." loading="lazy" decoding="async"><figcaption><span>Stage 3 &middot; Dropped</span><b>The reversal</b>A separate platform replaces the system rather than evolving it.</figcaption></figure>
-    <figure class="scr is-built"><img src="public/screens/web/stage-4-layer.webp" width="640" height="480" alt="The existing prescription screen with the assistant docked at the right." loading="lazy" decoding="async"><figcaption><span>Stage 4 &middot; Built</span><b>The generative layer</b>Voice and chat capture fill the form; smart fill adds what nobody asked for.</figcaption></figure>
-    <figure class="scr is-built"><img src="public/screens/web/stage-5-personal.webp" srcset="public/screens/web/stage-5-personal.webp 640w, public/screens/web/stage-5-personal-lg.webp 2000w" sizes="(max-width: 900px) 100vw, 580px" width="640" height="480" alt="A generated cardiology template: cardiac risk profile and ejection fraction blocks, with the assistant explaining what it pre-configured." loading="lazy" decoding="async"><figcaption><span>Stage 5 &middot; Built</span><b>Personalisation</b>Onboarding reads the doctor&rsquo;s background and generates an editable template.</figcaption></figure>
-  </div>
-</section>
-
-<!-- ================================================= 09 THE PIVOT -->
-<section class="sec pivot" id="pivot" aria-labelledby="pivot-h">
-  <div class="wrap">
-    <div class="mark"><span>09</span><span>The pivot</span></div>
-    <h2 id="pivot-h" class="h-statement rv">The version that demoed best <em>was the one we dropped.</em></h2>
-    <div class="split2 sec-gap">
-      <p class="pull">The first answer was a separate, chat-first application on the same database, with navigation tabs echoing the record&rsquo;s original left panel.</p>
-      <p class="body">Whiteboarded, then drawn as a full journey covering patient overview, detailed record and consultation start. It looked like the confident version of the idea.</p>
-    </div>
-    <div class="pair2 dropped sec-gap">
-      <figure class="open"><img src="public/screens/web/stage-2-platform-lg.webp" width="1400" height="1179" alt="The standalone platform's patient overview, with vitals, medications, history and allergies as cards." loading="lazy" decoding="async"><figcaption class="cap"><span>Dropped</span>Patient overview</figcaption></figure>
-      <figure class="open"><img src="public/screens/web/stage-3-dropped-lg.webp" width="1400" height="1237" alt="The standalone platform's detailed patient record with a patient timeline." loading="lazy" decoding="async"><figcaption class="cap"><span>Dropped</span>Detailed record</figcaption></figure>
-    </div>
-    <div class="fork sec-gap" data-trace role="img" aria-label="Two directions from one problem. The standalone platform stops at the constraint; the layer inside the existing record continues, and is live.">
-      <p class="fork-origin"><span class="f-dot"></span>One problem</p>
-      <svg class="fork-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-        <path class="f-dash" pathLength="1" d="M0 50 C 50 50, 50 25, 100 25" vector-effect="non-scaling-stroke"/>
-        <path class="f-solid" pathLength="1" d="M0 50 C 50 50, 50 75, 100 75" vector-effect="non-scaling-stroke"/>
-      </svg>
-      <div class="fork-lanes">
-        <p class="lane is-dropped"><span class="lane-t">A new chat-first platform</span><i></i><span class="lane-end">Stops at the constraint</span></p>
-        <p class="lane is-kept"><span class="lane-t">A layer inside the record that already exists</span><i></i><span class="lane-end">Live</span></p>
-      </div>
-    </div>
-    <div class="split2 sec-gap">
-      <p class="pull">It partially conflicted with our original principle of improving the system without altering its core, and raised legitimate questions around feasibility.</p>
-      <p class="body">Note what that does <em>not</em> say. Not that it was wrong, or that users rejected it. It was judged insufficiently aligned with a principle committed to in advance.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ================================================= 10 GENERATIVE EMR: the layer, lit in order -->
-<section class="act-e pin" id="generative" data-pin data-span="0.75" aria-labelledby="gen-h">
+<!-- ================================================= 06 THREE KEY DESIGN DECISIONS -->
+<section class="act-e pin" id="decisions" data-pin data-span="0.75" aria-labelledby="dec-h">
   <div class="pin-stage">
     <div class="wrap e-wrap">
       <div class="e-head">
-        <div class="mark"><span>10</span><span>Generative EMR</span></div>
-        <h2 id="gen-h" class="h-sec">The record stays. <em>The typing goes.</em></h2>
+        <div class="mark"><span>06</span><span>Three key design decisions</span></div>
+        <h2 id="dec-h" class="h-sec">The record stays. <em>The typing goes.</em></h2>
       </div>
       <ol class="sys" id="sys" aria-label="One spoken sentence, through the layer">
         <li><span class="sys-k">The doctor</span><div class="sys-node"><p class="sys-say">&ldquo;Temperature 100.4, pulse 96, BP 128 by 84&hellip;&rdquo;</p></div><p class="sys-p">Types or speaks in natural language, in the assistant docked alongside the record.</p></li>
-        <li><span class="sys-k">Voice and chat input</span><div class="sys-node"><b>A waveform</b><small>scrub and playback, not a record button</small></div><p class="sys-p">The doctor can hear what was said, which matters once the system writes into a clinical record on the strength of it.</p></li>
-        <li><span class="sys-k">The layer</span><div class="sys-node is-ai"><b>Writes the record</b><small>structured, in real time</small></div><p class="sys-p">Smart fill goes further: components the doctor never mentioned get added too.</p></li>
-        <li><span class="sys-k">The record</span><div class="sys-node"><b>10 fields &middot; 3 sections</b><small>same tabs, same medication table, same examinations row</small></div><p class="sys-p">Everything underneath is untouched. The core is not modified, it is supplied.</p></li>
-        <li><span class="sys-k">Readback</span><div class="sys-node"><b>Says what it wrote</b><small>field by field, reviewed before use</small></div><p class="sys-p">Instead of silently populating the form.</p></li>
+        <li><span class="sys-k">Decision A &middot; Input</span><div class="sys-node"><b>Voice and chat</b><small>a waveform with scrub and playback</small></div><p class="sys-p">Natural input, captured where the doctor already works.</p></li>
+        <li><span class="sys-k">The layer</span><div class="sys-node is-ai"><b>Writes the record</b><small>structured, in real time</small></div><p class="sys-p">Smart fill adds components the doctor never mentioned.</p></li>
+        <li><span class="sys-k">Decision B &middot; Readback</span><div class="sys-node"><b>Says what it wrote</b><small>field by field, reviewed before use</small></div><p class="sys-p">Never silently populating the form.</p></li>
+        <li><span class="sys-k">Decision C &middot; Shape</span><div class="sys-node"><b>Arrives shaped</b><small>a template from the doctor&rsquo;s profile</small></div><p class="sys-p">Editable by chat, voice or hand.</p></li>
       </ol>
     </div>
   </div>
 </section>
 
-<section class="sec sys-more" aria-label="The layer in detail">
+<section class="sec decisions" aria-label="The three decisions in detail">
   <div class="wrap">
-    <p class="body">The kept direction drops the new application entirely. The record stays where it was; an assistant docks alongside, and the doctor never opens a field to fill one.</p>
+    <!-- A -->
+    <article class="dec" aria-labelledby="dec-a-h">
+      <div class="dec-head"><p class="dec-n">Decision A</p><h3 id="dec-a-h" class="h-sec">Natural input into structured records.</h3></div>
+    </article>
   </div>
   <figure class="shot open"><img src="public/screens/web/06-extended-view.webp" width="1800" height="1262" alt="Two versions of the same full-length prescription record. Left: empty fields, as the doctor had to fill them. Right: the same record populated, with the assistant docked alongside listing what it added." loading="lazy" decoding="async"><figcaption><span>Fig. 02</span>Left, the record as the doctor had to fill it. Right, the same record, filled from the conversation beside it.</figcaption></figure>
-  <div class="wrap sec-gap">
-    <div class="split2 features">
-      <article><figure class="open"><img src="public/screens/web/05c-waveform.webp" width="1000" height="186" alt="A voice recording waveform with scrub, pause and stop controls, above the standing disclaimer." loading="lazy" decoding="async"></figure><p class="kicker">Voice and chat input</p><h3 class="h-sub">Doctors record the session. The EMR fills itself from the transcript.</h3><p class="body-sm">A waveform with scrub and playback, not a record button. The doctor can hear what was said, which matters when the system has written into a clinical record on the strength of it.</p></article>
-      <article><figure class="open"><img src="public/screens/web/05b-exchange.webp" width="1000" height="549" alt="The doctor's dictated sentence, and the assistant's reply listing each field it filled: pulse, temperature, chief complaints, medication and duration." loading="lazy" decoding="async"></figure><p class="kicker">Field-by-field readback</p><h3 class="h-sub">The assistant says what it wrote, instead of silently populating the form.</h3><p class="body-sm">Smart fill goes further: components the doctor never mentioned get added to the record too.</p></article>
+  <div class="wrap">
+    <div class="dec-body">
+      <figure class="dec-img"><img src="public/screens/web/05c-waveform.webp" width="1000" height="186" alt="A voice recording waveform with scrub, pause and stop controls, above the standing disclaimer." loading="lazy" decoding="async"><figcaption class="cap"><span>Voice input</span>A waveform with scrub and playback, not a record button.</figcaption></figure>
+      <dl class="rows dec-rows">
+        <div><dt>Problem</dt><dd>Traditional EMRs make clinicians enter structured data into rigid fields, during or after the visit.</dd></div>
+        <div><dt>Rationale</dt><dd>The record stays where it was; an assistant docks alongside, and the doctor never opens a field to fill one.</dd></div>
+        <div><dt>Design</dt><dd>Doctors record the session or type, and the EMR fills itself from the transcript. Smart fill goes further: components the doctor never mentioned get added to the record too.</dd></div>
+        <div><dt>Value</dt><dd>It changes nothing about the record, and everything about filling it in.</dd></div>
+      </dl>
+    </div>
+
+    <!-- B -->
+    <article class="dec" aria-labelledby="dec-b-h">
+      <div class="dec-head"><p class="dec-n">Decision B</p><h3 id="dec-b-h" class="h-sec">Accountability through readback and review.</h3></div>
+      <div class="dec-body dec-b-body">
+        <figure class="dec-img readback"><img src="public/screens/web/05b-exchange.webp" width="1000" height="549" alt="The doctor's dictated sentence, and the assistant's reply listing each field it filled: pulse, temperature, chief complaints, medication and duration." loading="lazy" decoding="async"><figcaption class="cap"><span>Readback</span>The dictated sentence, and the assistant&rsquo;s list of every field it filled.</figcaption></figure>
+        <dl class="rows dec-rows">
+          <div><dt>Problem</dt><dd>The disclaimer only means something if machine output is distinguishable from what a human entered.</dd></div>
+          <div><dt>Rationale</dt><dd>The assistant says what it wrote, instead of silently populating the form. The doctor can hear what was said, which matters when the system has written into a clinical record on the strength of it.</dd></div>
+          <div><dt>Design</dt><dd>Field-by-field readback, voice playback with scrub, and one line in the footer of every screen carrying the assistant, permanently.</dd></div>
+          <div><dt>Value</dt><dd>The confirmation step is not friction; it is the product taking its own disclaimer seriously.</dd></div>
+        </dl>
+      </div>
+      <p class="review-line">All outputs are intended to assist and should be reviewed before use.</p>
+    </article>
+
+    <!-- C -->
+    <article class="dec" aria-labelledby="dec-c-h">
+      <div class="dec-head"><p class="dec-n">Decision C</p><h3 id="dec-c-h" class="h-sec">Personalisation and contextual actions.</h3><p class="body">Could the record arrive already shaped for the person opening it?</p></div>
+    </article>
+  </div>
+  <figure class="shot open"><img src="public/screens/web/stage-5-personal-lg.webp" width="2000" height="1063" alt="The template designer for a cardiologist: Cardiac Risk Profile and Ejection Fraction and Echo blocks, with the AI clinical assistant's onboarding guide explaining what it pre-configured." loading="lazy" decoding="async"><figcaption><span>Fig. 03</span>A cardiologist&rsquo;s first template, generated at onboarding and fully editable.</figcaption></figure>
+  <div class="wrap">
+    <div class="dec-body">
+      <div>
+        <p class="kicker">A cardiologist opens to</p>
+        <dl class="rows"><div><dt>Cardiac risk profile</dt><dd>Smoking history, family history of CAD, dyslipidemia.</dd></div><div><dt>Ejection fraction and echo</dt><dd>LVEF percentage, RWMA presence.</dd></div></dl>
+        <blockquote class="machine-quote sec-gap-sm"><p>&ldquo;Based on your profile as a Cardiology specialist, I&rsquo;ve pre-configured your EMR with your preferred sections.&rdquo;</p><footer>The assistant says so. Declared, not silent, and editable by chat, voice or hand.</footer></blockquote>
+      </div>
+      <dl class="rows dec-rows">
+        <div><dt>Problem</dt><dd>The record already shipped with templates for Cough, Cold and Fever, chosen manually from a row of chips.</dd></div>
+        <div><dt>Rationale</dt><dd>This is that mechanism, with the choosing removed.</dd></div>
+        <div><dt>Design</dt><dd>An onboarding flow reads a clinician&rsquo;s background out of the company&rsquo;s existing doctor database, and generates a personalised, fully editable starting template.</dd></div>
+        <div><dt>Tested</dt><dd>Against four doctors&rsquo; data.</dd></div>
+      </dl>
     </div>
     <p class="kicker sec-gap">A working surface, not a chat window</p>
     <p class="body-sm">Slash commands for appointments, an inline calendar, quick actions in-thread, and hover-to-hide to reclaim the width.</p>
   </div>
-  <div class="screens panels">
+  <div class="screens panels" data-still>
     <figure class="scr"><img src="public/screens/web/08-slash-command.webp" width="544" height="944" alt="A slash-command menu listing add appointment, reschedule and cancel." loading="lazy" decoding="async"><figcaption><span>Slash commands</span></figcaption></figure>
     <figure class="scr"><img src="public/screens/web/10-calendar-component.webp" width="544" height="952" alt="A calendar rendered inline inside the conversation for picking an appointment date." loading="lazy" decoding="async"><figcaption><span>Scheduling in-thread</span></figcaption></figure>
     <figure class="scr"><img src="public/screens/web/12-chat-quick-actions.webp" width="544" height="944" alt="Suggested next actions offered beneath the conversation." loading="lazy" decoding="async"><figcaption><span>Quick actions</span></figcaption></figure>
@@ -338,28 +409,15 @@
   </div>
 </section>
 
-<!-- ================================================= 11 PERSONALISATION -->
-<section class="sec" id="personalisation" aria-labelledby="pers-h">
+<!-- ================================================= 07 THE CONSULTATION JOURNEY: the sticky story -->
+<section class="sec" id="journey" aria-labelledby="prod-h">
   <div class="wrap">
-    <div class="mark"><span>11</span><span>Personalisation</span></div>
-    <h2 id="pers-h" class="h-statement rv">Could the record arrive <em>already shaped for the person opening it?</em></h2>
-  </div>
-  <figure class="shot open"><img src="public/screens/web/stage-5-personal-lg.webp" width="2000" height="1063" alt="The template designer for a cardiologist: Cardiac Risk Profile and Ejection Fraction and Echo blocks, with the AI clinical assistant's onboarding guide explaining what it pre-configured." loading="lazy" decoding="async"><figcaption><span>Fig. 03</span>A cardiologist&rsquo;s first template, generated at onboarding and fully editable.</figcaption></figure>
-  <div class="wrap sec-gap">
-    <div class="split2">
-      <div><p class="pull">An onboarding flow reads a clinician&rsquo;s background out of the company&rsquo;s existing doctor database, and generates a personalised, fully editable starting template.</p><p class="body">Tested against four doctors&rsquo; data. The record already shipped with templates for Cough, Cold and Fever, chosen manually from a row of chips. This is that mechanism, with the choosing removed.</p></div>
-      <div><p class="kicker">A cardiologist opens to</p><dl class="rows"><div><dt>Cardiac risk profile</dt><dd>Smoking history, family history of CAD, dyslipidemia.</dd></div><div><dt>Ejection fraction and echo</dt><dd>LVEF percentage, RWMA presence.</dd></div></dl></div>
-    </div>
-    <blockquote class="machine-quote sec-gap"><p>&ldquo;Based on your profile as a Cardiology specialist, I&rsquo;ve pre-configured your EMR with your preferred sections.&rdquo;</p><footer>The assistant says so. Declared, not silent, and editable by chat, voice or hand.</footer></blockquote>
-  </div>
-</section>
-
-<!-- ================================================= 12 FINAL PRODUCT: the sticky story -->
-<section class="sec" id="product" aria-labelledby="prod-h">
-  <div class="wrap">
-    <div class="mark"><span>12</span><span>Final product</span></div>
+    <div class="mark"><span>07</span><span>The complete consultation</span></div>
     <h2 id="prod-h" class="h-statement rv">One consultation, start to finish, <em>in one thread.</em></h2>
-    <p class="body">The whole journey happens in the panel, alongside a record the doctor never opens.</p>
+    <div class="split2 sec-gap ab">
+      <div class="ab-col ab-panel"><p class="kicker">In the assistant panel</p><p class="body-sm">Session start with named capabilities, voice capture with scrub and playback, field-by-field readback, scheduling in-thread, and an end-of-consultation summary and handoff.</p></div>
+      <div class="ab-col"><p class="kicker">Unchanged in the EMR</p><p class="body-sm">Same tabs, same medication table, same examinations row, same footer actions. The core is not modified, it is supplied.</p></div>
+    </div>
   </div>
   <div class="wrap story" id="flow-story">
     <div class="story-side">
@@ -371,10 +429,10 @@
       </div>
     </div>
     <ol class="story-steps">
-      <li><p class="st-k">01</p><h3>Session opens</h3><p>Session start with named capabilities: manage appointments, create and complete prescriptions, turn conversations into EMR notes, retrieve patient details.</p></li>
-      <li><p class="st-k">02</p><h3>Doctor speaks</h3><p>Voice capture with scrub and playback, beneath the fields the assistant has already written.</p></li>
-      <li><p class="st-k">03</p><h3>Record fills</h3><p>Field-by-field readback, and scheduling in-thread: the doctor sets the next appointment in the same conversation.</p></li>
-      <li><p class="st-k">04</p><h3>Consultation ends</h3><p>An end-of-consultation summary and handoff: prescription generated, with share, invoice and follow-up offered.</p></li>
+      <li><p class="st-k">01</p><h3>Session opens</h3><p>The assistant opens with four capabilities: manage appointments, create and complete prescriptions, turn conversations into EMR notes, retrieve patient details.</p></li>
+      <li><p class="st-k">02</p><h3>Doctor speaks</h3><p>Voice capture running, beneath the fields the assistant has already written.</p></li>
+      <li><p class="st-k">03</p><h3>Record fills, then the next visit</h3><p>The assistant lists the fields it wrote, and the doctor sets the next appointment in the same thread.</p></li>
+      <li><p class="st-k">04</p><h3>Consultation ends</h3><p>Prescription generated, with share, invoice and follow-up offered.</p></li>
     </ol>
   </div>
   <div class="wrap sec-gap">
@@ -383,41 +441,28 @@
       <div><dt>Achieved</dt><dd>A consultation is documented, scheduled and shared from a single thread.</dd></div>
     </dl>
   </div>
-  <figure class="shot open"><img src="public/screens/web/profile-with-assistant.webp" width="1600" height="1397" alt="The patient profile for Ishaan Awasthi, with medical background, vitals and payment, and the assistant open at the right." loading="lazy" decoding="async"><figcaption><span>Fig. 04</span>Patient profile, with the assistant open.</figcaption></figure>
-  <div class="wrap sec-gap">
-    <div class="split2">
-      <div><p class="kicker">Reviewed before use</p><p class="pull machine">All outputs are intended to assist and should be reviewed before use.</p></div>
-      <p class="body">One line sits in the footer of every screen carrying the assistant, permanently. It only means something if machine output is distinguishable from what a human entered, which is why the assistant reads back what it wrote, field by field. The confirmation step is not friction; it is the product taking its own disclaimer seriously.</p>
+</section>
+
+<!-- ================================================= 08 FROM PROTOTYPE TO LIVE PRODUCT -->
+<section class="sec live" id="live" aria-labelledby="live-h">
+  <div class="wrap">
+    <div class="mark"><span>08</span><span>From prototype to live product</span></div>
+    <h2 id="live-h" class="h-statement rv">The feature is live. <em>Getting there took longer than the design did.</em></h2>
+    <div class="split2 sec-gap">
+      <p class="pull">For a stretch the feature was finished and unshippable.</p>
+      <p class="body">The prototype ran against an existing database, but connecting it to the company&rsquo;s full-scale doctor database needed engineering expertise the team did not hold.</p>
     </div>
   </div>
-</section>
-
-<!-- ================================================= 13 WHAT I LEARNED -->
-<section class="sec learnings" id="learnings" aria-labelledby="learn-h">
+  <figure class="shot open"><img src="public/screens/web/profile-with-assistant.webp" width="1600" height="1397" alt="The patient profile for Ishaan Awasthi, with medical background, vitals and payment, and the assistant open at the right." loading="lazy" decoding="async"><figcaption><span>Fig. 04</span>Patient profile, with the assistant open.</figcaption></figure>
   <div class="wrap">
-    <div class="mark"><span>13</span><span>What I learned</span></div>
-    <h2 id="learn-h" class="visually-hidden">What I learned</h2>
-    <ol class="learn">
-      <li><h3 class="rv">Intelligence cannot be drawn, only run.</h3><p>A static screen can claim the system understood. It cannot show it understanding. On AI work the prototype is the design, not a picture of it.</p></li>
-      <li><h3 class="rv">The shift was structural, not cosmetic.</h3><p>The gain came from changing how information gets into the record, not from redrawing it. Every screen we left alone was part of the result.</p></li>
-      <li><h3 class="rv">Write the constraint down before the work.</h3><p>One sentence, agreed in advance, is what let us kill our own best-looking direction. A principle only works if it exists before the thing it has to judge.</p></li>
-    </ol>
-  </div>
-</section>
-
-<!-- ================================================= 14 WHERE IT STANDS: back to the opening's stage -->
-<section class="sec try" id="next" aria-labelledby="next-h">
-  <div class="try-stage">
-    <div class="wrap a-grid try-grid">
-      <div class="try-copy">
-        <div class="mark"><span>14</span><span>Where it stands</span></div>
-        <h2 id="next-h" class="h-sec">The feature is live.</h2>
-        <p class="body-sm">Getting there took longer than the design did. The prototype ran against an existing database, but connecting it to the company&rsquo;s full-scale doctor database needed engineering expertise the team did not hold. For a stretch the feature was finished and unshippable.</p>
-        <p class="kicker sec-gap-sm">The measures that matter</p>
-        <ol class="rows">
-          <li><span class="k">01</span><span class="v">What share of prescriptions get generated through conversation rather than typing.</span></li>
-          <li><span class="k">02</span><span class="v">Whether the time from patient to completed record actually falls.</span></li>
-        </ol>
+    <div class="usage sec-gap">
+      <div class="usage-l">
+        <p class="kicker"><span class="tag-m">Measured</span> Usage, from the product dashboard</p>
+        <p class="body">How many consultations ran on Generative EMR, April to September 2026. It counts use, not outcomes.</p>
+        <div class="unmeasured">
+          <p class="kicker"><span class="tag-h">Not yet measured</span></p>
+          <p class="body-sm">Whether documentation time falls, and how much of prescribing moves into conversation. Both are in What comes next.</p>
+        </div>
       </div>
       <div class="dash" aria-labelledby="dash-t">
         <div class="dash-head"><p class="dash-title" id="dash-t">Consultations on Generative EMR</p><p class="dash-range">Apr to Sep 2026</p></div>
@@ -433,6 +478,39 @@
           </ol>
         </div>
         <p class="dash-foot">From the product dashboard, 23 September 2026. September counts to the 23rd.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================= 09 WHAT I LEARNED -->
+<section class="sec learnings" id="learnings" aria-labelledby="learn-h">
+  <div class="wrap">
+    <div class="mark"><span>09</span><span>What I learned</span></div>
+    <h2 id="learn-h" class="h-statement rv">Three things this project <em>settled about designing for AI.</em></h2>
+    <ol class="learn learn-big">
+      <li><h3 class="rv"><span class="l-k">On prototyping AI</span>Intelligence cannot be drawn, only run.</h3><p>A static screen can claim the system understood. It cannot show it understanding. On AI work the prototype is the design, not a picture of it.</p></li>
+      <li><h3 class="rv"><span class="l-k">On adding to an enterprise product</span>The shift was structural, not cosmetic.</h3><p>The gain came from changing how information gets into the record, not from redrawing it. Every screen we left alone was part of the result.</p></li>
+      <li><h3 class="rv"><span class="l-k">On constraints</span>Write the constraint down before the work.</h3><p>One sentence, agreed in advance, is what let us kill our own best-looking direction. A principle only works if it exists before the thing it has to judge.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================================================= 10 WHAT COMES NEXT: back to the opening's stage -->
+<section class="sec try" id="next" aria-labelledby="next-h">
+  <div class="try-stage">
+    <div class="wrap a-grid try-grid">
+      <div class="try-copy">
+        <div class="mark"><span>10</span><span>What comes next</span></div>
+        <h2 id="next-h" class="h-sec">The measures that matter.</h2>
+        <ol class="rows">
+          <li><span class="k">01</span><span class="v">What share of prescriptions get generated through conversation rather than typing.</span></li>
+          <li><span class="k">02</span><span class="v">Whether the time from patient to completed record actually falls.</span></li>
+        </ol>
+        <p class="fine">Both are still to be measured. The usage above is the only evidence so far.</p>
+      </div>
+      <div class="closing">
+        <p class="closing-t">Keep the structure clinicians already rely on. <em>Rethink how information gets into it.</em></p>
       </div>
     </div>
   </div>

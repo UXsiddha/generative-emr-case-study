@@ -17,7 +17,7 @@
   if (shots.length && rows.length) K.autoplay($('#top'), rows.length, function (i) {
     rows.forEach(function (li, k) { li.classList.toggle('is-now', k === i); });
     shots.forEach(function (im, k) { im.classList.toggle('is-on', k === i); });
-  }, 3200);
+  }, 3600);
 
   /* C: the line runs between the first and last remaining dots */
   var actC = $('.act-c');
@@ -88,6 +88,7 @@
     }
     function reset() {
       timers.forEach(clearTimeout); timers = [];
+      demo.classList.remove('is-review');
       said.textContent = ''; said.hidden = true; said.classList.remove('caret');
       replied.hidden = true;
       FILLS.forEach(function (f) {
@@ -96,15 +97,21 @@
         el.querySelector('.val').textContent = el.getAttribute('data-empty') || '';
       });
     }
+    var steps = $$('#proto-steps li');
+    var stepTo = function (k) { steps.forEach(function (li, n) { li.classList.toggle('is-now', n === k); li.classList.toggle('is-lit', n <= k); }); };
     function play() {
       reset();
+      stepTo(0);
       said.hidden = false; said.classList.add('caret');
       var i = 0;
       (function type() {
         if (i <= UTTERANCE.length) { said.textContent = UTTERANCE.slice(0, i++); at(type, 22); return; }
         said.classList.remove('caret');
-        at(function () { replied.hidden = false; }, 420);
-        FILLS.forEach(function (f, n) { at(function () { fill(f); }, 760 + n * 180); });
+        at(function () { stepTo(1); }, 300);
+        FILLS.forEach(function (f, n) { at(function () { fill(f); }, 500 + n * 180); });
+        var after = 500 + FILLS.length * 180;
+        at(function () { replied.hidden = false; stepTo(2); }, after + 300);
+        at(function () { stepTo(3); demo.classList.add('is-review'); }, after + 2200);
       })();
     }
     var shown = false;

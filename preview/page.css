@@ -46,7 +46,7 @@
 .screens.stages { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 3vw, 2.75rem) clamp(1.25rem, 3vw, 2.5rem); max-width: 1180px; }
 .stages .scr img { border-radius: 14px; aspect-ratio: 4 / 3; object-fit: cover; box-shadow: 0 0 0 1px var(--line-2); }
 .stages .scr:nth-child(even) { margin-top: clamp(2rem, 5vw, 4.5rem); }
-.stages .scr:last-child { grid-column: 1 / -1; justify-self: center; width: calc(50% - clamp(0.6rem, 1.5vw, 1.25rem)); }
+/* stages now sit in pairs */
 .stages figcaption { max-width: 34rem; }
 .stages figcaption b { display: block; margin-bottom: 0.3rem; font: 500 clamp(1.1rem, 1.5vw, 1.3rem)/1.25 var(--display); color: var(--fg); }
 .stages .is-dropped img { filter: grayscale(0.9) brightness(0.8); }
@@ -334,7 +334,6 @@
   .screens.panels { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: none; }
   .screens.stages { grid-template-columns: 1fr; max-width: 560px; }
   .stages .scr:nth-child(even) { margin-top: 0; }
-  .stages .scr:last-child { width: 100%; }
   .panels .scr:nth-child(even) { margin-top: 0; }
   .try-grid .dash { grid-column: 1; grid-row: auto; }
   .fork { grid-template-columns: auto 3rem minmax(0, 1fr); }
@@ -348,3 +347,101 @@
   .tu-track { height: 2.5rem; width: calc(var(--p) * 2%); }
 }
 @keyframes fade-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* =========================================================================
+   The restructured story, 2026-10-11: ten chapters, evidence labelled by
+   where it comes from, the pivot told as a decision, the prototype as the
+   centre, three decisions with their own compositions.
+   ========================================================================= */
+/* the hero: the record and the assistant, named */
+.frame-key { display: flex; justify-content: space-between; gap: 1rem; margin: 0.9rem 0 0; font: 500 0.68rem var(--display); letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-3); }
+.frame-key span::before { content: ''; display: inline-block; width: 8px; height: 8px; margin-right: 0.45rem; border-radius: 2px; vertical-align: 0.05em; }
+.frame-key .k-rec::before { border: 1px solid var(--fg-2); }
+.frame-key .k-ai { color: var(--accent); }
+.frame-key .k-ai::before { background: var(--accent); }
+.live-tag { color: var(--ok); }
+
+/* where a figure comes from */
+.tag-src, .tag-own, .tag-m, .tag-h { display: inline-flex; align-items: center; margin-right: 0.6rem; padding: 0.15rem 0.55rem; border-radius: 999px; font: 500 0.62rem/1.3 var(--display); letter-spacing: 0.06em; text-transform: uppercase; vertical-align: 0.1em; white-space: nowrap; }
+.tag-src { border: 1px solid var(--line-2); color: var(--fg-2); }
+.tag-own { border: 1px solid rgba(var(--accent-rgb), 0.45); color: var(--accent); }
+.tag-m { border: 1px solid rgba(143, 211, 167, 0.45); color: var(--ok); }
+.tag-h { border: 1px dashed rgba(var(--accent-rgb), 0.6); color: var(--accent); }
+.evidence { padding-top: 2rem; border-top: 1px solid var(--line); }
+.existing { padding-top: clamp(4rem, 8vw, 6rem); }
+
+/* constraints: one principle above three constraints, each with what it led to */
+.principle { padding: clamp(1.5rem, 3vw, 2.5rem); border: 1px solid rgba(var(--accent-rgb), 0.35); border-radius: var(--r-lg); background: rgba(var(--accent-rgb), 0.05); }
+.principle-t { margin: 0; font: 500 clamp(1.6rem, 3vw, 2.6rem)/1.1 var(--display); letter-spacing: -0.03em; color: var(--fg); }
+.cframe { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-left: 1px solid var(--line); }
+.cframe li { position: relative; display: grid; align-content: start; gap: 0.6rem; padding: 2.5rem clamp(1rem, 2vw, 1.75rem) 0; border-right: 1px solid var(--line); }
+.cframe li::before { content: ''; position: absolute; top: 0; left: 50%; width: 1px; height: 2rem; background: rgba(var(--accent-rgb), 0.5); }
+.cf-n { margin: 0; font: 500 0.72rem var(--display); letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-3); }
+.cframe h3 { margin: 0; font: 500 clamp(1.15rem, 1.6vw, 1.4rem)/1.2 var(--display); color: var(--fg); }
+.cframe p { margin: 0; font-size: 0.95rem; line-height: 1.55; color: var(--fg-2); }
+.cframe .cf-led { margin-top: 0.6rem; padding-top: 0.8rem; border-top: 1px solid var(--line); color: var(--fg); font: 500 0.98rem/1.4 var(--display); }
+.cf-led span { display: block; margin-bottom: 0.3rem; font: 500 0.66rem var(--display); letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+.h-sub em.dim { font-style: normal; color: var(--fg-3); }
+
+/* evolution: the timeline, the dropped direction told as a decision */
+.timeline .t-drop b { color: var(--fg-3); text-decoration: line-through; text-decoration-thickness: 1px; }
+.timeline .t-built small { color: var(--accent); }
+.stages-2 { margin-top: clamp(3rem, 6vw, 4.5rem); }
+.pivot-why { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: var(--gap); align-items: start; margin-top: clamp(4rem, 8vw, 6rem); }
+.why-box { padding: clamp(1.5rem, 3vw, 2.25rem); border: 1px solid var(--line-2); border-radius: var(--r-lg); background: var(--bg-2); }
+.why-t { margin: 0; font: 500 clamp(1.2rem, 1.8vw, 1.55rem)/1.3 var(--display); letter-spacing: -0.015em; color: var(--fg); }
+.dropped-one { max-width: 820px; padding: 0; }
+.dropped-one img { filter: grayscale(0.9) brightness(0.85); transition: filter 0.6s ease; }
+@media (hover: hover) { .dropped-one:hover img { filter: none; } }
+
+/* the prototype: the sequence the demo plays, lit as it plays */
+.proto-steps { margin-top: clamp(3rem, 6vw, 4rem); }
+.proto-steps li.is-now::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 12px var(--accent); }
+.proto-steps li.is-now { color: var(--fg); }
+.demo-stage { margin-top: 2rem; }
+
+/* decisions */
+.dec { margin-top: clamp(4.5rem, 9vw, 7rem); padding-top: 2rem; border-top: 1px solid var(--line); }
+.dec:first-child { margin-top: 0; }
+.dec-head { display: grid; gap: 0.6rem; max-width: 46rem; }
+.dec-n { margin: 0; font: 500 0.78rem var(--display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.dec-head .h-sec { font-size: clamp(1.8rem, 3.2vw, 3rem); }
+.dec-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gap); align-items: center; margin-top: 2.5rem; }
+.dec-rows { margin-top: 0; }
+.dec-rows dt { font: 500 0.74rem var(--display) !important; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-3) !important; padding-top: 0.15rem; }
+.dec-rows dd { color: var(--fg); font-size: 1rem; }
+.dec-img { margin: 0; padding: clamp(1rem, 2.5vw, 1.75rem); border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--bg-2); }
+.dec-img img { width: 100%; border-radius: 8px; }
+.review-line { margin: 2.5rem 0 0; padding: 1.1rem 1.4rem; border-left: 2px solid var(--accent); font: 500 clamp(1.1rem, 1.8vw, 1.5rem)/1.35 var(--display); color: var(--accent); }
+.decisions .shot { margin-top: 2.5rem; }
+
+/* the consultation: what moves and what stays */
+.ab-col { padding: clamp(1.25rem, 2.5vw, 1.75rem); border: 1px solid var(--line); border-radius: var(--r-lg); }
+.ab-panel { border-color: rgba(var(--accent-rgb), 0.4); background: rgba(var(--accent-rgb), 0.05); }
+.ab-panel .kicker { color: var(--accent); }
+
+/* live: usage, labelled as usage */
+.usage { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: var(--gap); align-items: center; }
+.unmeasured { margin-top: 1.75rem; padding-left: 1rem; border-left: 1px dashed rgba(var(--accent-rgb), 0.5); }
+
+/* learnings, with weight */
+.learn-big { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+.learn-big li { padding: clamp(1.75rem, 3.4vw, 2.6rem) 0; }
+.learn-big h3 { font-size: clamp(1.5rem, 2.6vw, 2.3rem); line-height: 1.1; letter-spacing: -0.03em; }
+.learn-big p { font-size: 1.02rem; }
+.l-k { display: block; margin-bottom: 0.6rem; font: 500 0.72rem var(--display); letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-3); }
+
+/* the closing statement */
+.closing { grid-column: 2; grid-row: 1; align-self: center; }
+.closing-t { margin: 0; font: 500 clamp(1.8rem, 3.4vw, 3.1rem)/1.05 var(--display); letter-spacing: -0.035em; color: var(--fg); text-wrap: balance; }
+.closing-t em { font-style: normal; color: var(--accent); }
+
+@media (max-width: 900px) {
+  .cframe { grid-template-columns: 1fr; border-left: 0; }
+  .cframe li { border-right: 0; border-top: 1px solid var(--line); padding: 1.5rem 0; }
+  .cframe li::before { display: none; }
+  .pivot-why, .dec-body, .usage { grid-template-columns: 1fr; }
+  .closing { grid-column: 1; grid-row: auto; }
+  .frame-key { flex-direction: column; gap: 0.3rem; }
+}
+.demo.is-review .emr-disc { color: #3D4DB0; font-weight: 600; transition: color 0.4s; }
