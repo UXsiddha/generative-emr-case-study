@@ -101,7 +101,8 @@
           var r = getComputedStyle(img).borderRadius || '0px';
           gsap.fromTo(img, { clipPath: 'inset(16% 10% 16% 10% round ' + r + ')' }, { clipPath: 'inset(0% 0% 0% 0% round ' + r + ')', ease: 'none',
             scrollTrigger: { trigger: box, start: 'top 90%', end: 'top 35%', scrub: 0.5 } });
-          if (c.wide) gsap.to(img, { y: [-20, -60, -35, -50][i % 4], ease: 'none', scrollTrigger: { trigger: box, start: 'top bottom', end: 'bottom top', scrub: true } });
+          /* the figure drifts, not the image, so a caption stays with its screen */
+          if (c.wide) gsap.to(img.closest('.scr'), { y: [-10, -28, -16, -22][i % 4], ease: 'none', scrollTrigger: { trigger: box, start: 'top bottom', end: 'bottom top', scrub: true } });
         });
       });
 
@@ -120,6 +121,14 @@
         var late = $$('.dots, .peak', fig);
         if (late.length) gsap.fromTo(late, { opacity: 0 }, { opacity: 1, duration: 0.6,
           scrollTrigger: { trigger: fig, start: 'top 35%', once: true } });
+      });
+
+      /* a long screen scrolls inside its frame as the page passes it */
+      $$('.scrollshot').forEach(function (f) {
+        var img = $('img', f);
+        f.classList.add('is-driven');
+        gsap.fromTo(img, { y: 0 }, { y: function () { return -Math.max(0, img.offsetHeight - f.clientHeight); }, ease: 'none',
+          scrollTrigger: { trigger: f, start: 'top 70%', end: 'bottom 30%', scrub: 0.6, invalidateOnRefresh: true } });
       });
 
       /* count-ups, once each */
