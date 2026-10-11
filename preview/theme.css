@@ -11,8 +11,8 @@
 
      wellness  product blue, Bajaj Finserv Health's own; marks wallet value
      emr       indigo, the EMR app's own; marks what the machine wrote
-     workperks orange, the WorkPerks app's own (its story page carries the
-               same palette in story.css; the deep dive uses this file)
+   Both follow the WorkPerks chatbot case study's black edition (its own
+   story.css), which this file does not touch.
 
    Real product chrome (the EMR prescription replica) keeps its own light
    colours, the way the WorkPerks phone keeps its warm ones.
@@ -67,16 +67,6 @@
   --machine-soft:  var(--tint-soft);
   --machine-edge:  var(--tint-edge);
   --machine-night: var(--tint);
-}
-:root[data-project="workperks"] {
-  --tint:      #FF8A3D;
-  --tint-soft: rgba(255, 138, 61, 0.10);
-  --tint-edge: rgba(255, 138, 61, 0.34);
-  --tint-ink:  #CC6500;
-  --accent:       var(--tint);
-  --accent-soft:  var(--tint-soft);
-  --accent-edge:  var(--tint-edge);
-  --accent-night: var(--tint);
 }
 /* the EMR replica is the real app: its light ground and deep indigo stay */
 :root[data-theme="dark"] .emr {
