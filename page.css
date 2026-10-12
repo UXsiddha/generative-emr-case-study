@@ -35,6 +35,7 @@
 .c-mic { flex: none; width: 0.75rem; height: 1.05rem; border-radius: 999px; box-shadow: inset 0 0 0 1.5px var(--accent); }
 .c-typed { min-height: 1.4em; }
 .c-typed::after { content: ''; display: inline-block; width: 1.5px; height: 1.1em; margin-left: 2px; vertical-align: -0.15em; background: var(--signal); animation: caret 1s steps(1) infinite; }
+@media (prefers-reduced-motion: reduce) { .c-typed::after { animation: none; } }
 .act-c.is-after .c-steps .swap:last-child i { background: var(--signal); border-color: var(--signal); }
 .act-c.is-after .c-steps .swap:last-child .b { color: var(--accent); }
 .no-pin .c-say { opacity: 1; clip-path: none; }
@@ -122,10 +123,14 @@
    and the app's deep indigo, the way the chatbot's phone keeps its own.
    ========================================================================= */
 .demo-stage { margin-top: clamp(3rem, 6vw, 4.5rem); }
-.demo { --rule: rgba(16, 17, 20, 0.13); --ink: #101114; --ink-3: #7F8086; --paper: #F3F2EE; --paper-2: #E8E6E0; --white: #FFFFFF;
+.demo { --rule: rgba(16, 17, 20, 0.13); --ink: #101114; --ink-3: #5F6168; --paper: #F3F2EE; --paper-2: #E8E6E0; --white: #FFFFFF;
   --machine: #3D4DB0; --machine-soft: rgba(61, 77, 176, 0.07); --machine-edge: rgba(61, 77, 176, 0.28); --mono: 'Geist Mono', ui-monospace, monospace; --stack-lg: 0px;
   --fg: #101114; --fg-2: #4A4B50; color-scheme: light; }
-.demo-note { font-size: 0.72rem; color: #7F8086; }
+.demo-note { font-size: 0.72rem; color: #5F6168; }
+.demo-replay { min-height: 2.5rem; padding: 0 1rem; border: 1px solid var(--machine-edge); border-radius: 999px; background: none; font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--machine); cursor: pointer; }
+.demo-replay:hover { background: var(--machine-soft); }
+.demo-foot { flex-wrap: wrap; }
+.demo-foot .demo-note { margin-left: auto; }
 .demo-stage > .cap span { color: var(--accent); }
 
 
@@ -169,7 +174,7 @@
   --emr-bg: #F3F4FA;
   --emr-line: #E3E5F0;
   --emr-ink: #1F2233;
-  --emr-mute: #8A8FA6;
+  --emr-mute: #5F6478;
   padding: clamp(0.75rem, 1.6vw, 1.25rem);
   background: var(--emr-bg);
   color: var(--emr-ink);
@@ -317,7 +322,7 @@
 .emr-input span { flex: 1; }
 .emr-input .mic { width: 0.9rem; height: 1.1rem; border-radius: 999px; box-shadow: inset 0 0 0 1.5px var(--emr-mute); }
 .emr-input .send { width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--emr); }
-.emr-disc { margin: 0; font-size: 0.64rem; text-align: center; color: var(--emr-mute); }
+.emr-disc { margin: 0; font-size: 0.75rem; text-align: center; color: var(--emr-mute); }
 
 .emr-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.2rem; margin-top: 0.9rem; padding: 0.7rem 0.9rem; border-radius: 10px; background: #fff; box-shadow: 0 0 0 1px var(--emr-line); font-size: 0.74rem; }
 .emr-actions .lk { font-weight: 500; color: var(--emr); }
@@ -445,3 +450,18 @@
   .frame-key { flex-direction: column; gap: 0.3rem; }
 }
 .demo.is-review .emr-disc { color: #3D4DB0; font-weight: 600; transition: color 0.4s; }
+/* the demo on a narrow screen: the record, then the chat; vitals in two rows,
+   the medicine row as a name over a two-by-two */
+@media (max-width: 900px) {
+  .emr-body { grid-template-columns: minmax(0, 1fr); }
+  .emr-exam { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  /* blood pressure takes two columns at the start of the second row */
+  .emr-exam [data-field="bp"] { grid-column: span 2; order: 1; }
+  .emr-exam > :nth-child(n+6) { order: 1; }
+  .emr-med { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .emr-mc { border-left: 0; border-top: 1px solid var(--emr-line); }
+  .emr-mc:first-child { grid-column: 1 / -1; border-top: 0; }
+  .emr-mc:nth-child(odd):not(:first-child) { border-left: 1px solid var(--emr-line); }
+  .emr-thread { min-height: 12rem; }
+  .emr-tabs { gap: 1rem; overflow-x: auto; scrollbar-width: none; }
+}

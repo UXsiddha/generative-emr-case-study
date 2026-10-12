@@ -39,9 +39,9 @@
   --bleed:    1680px;
   --gutter:   clamp(1rem, 4vw, 3rem);
   --prose:    40rem;
-  --section:  clamp(5.5rem, 11vw, 10.5rem);
+  --section:  clamp(4rem, 7.5vw, 7rem);      /* was clamp(5.5rem, 11vw, 10.5rem): 317px between sections read as empty */
   --stack:    clamp(2.5rem, 5vw, 4.5rem);
-  --stack-lg: clamp(3.5rem, 8vw, 7rem);
+  --stack-lg: clamp(3rem, 6vw, 5rem);        /* was clamp(3.5rem, 8vw, 7rem) */
   --topbar:   3.75rem;
   --rail:     0px;      /* the side rail's reserved margin; set from 1180px */
   --radius:   clamp(8px, 1vw, 14px);
@@ -2324,3 +2324,47 @@ main > section:not(.dark) + section:not(.dark) { padding-top: 0; }
   text-transform: none;
 }
 .tb-num { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.04em; }
+
+/* ============================================================
+   The hover grid from the Framer splash, behind "The existing EMR"
+   and "Generative EMR" only. Drawn by kinetic-grid.js; the canvas
+   sits under the section's content and never takes pointer input.
+   ============================================================ */
+.has-kgrid { position: relative; isolation: isolate; }
+/* every section: a screen-tall canvas that sticks while its section scrolls
+   past (kinetic-grid.js adds the wrapper). overflow: clip, not hidden, so the
+   wrapper does not become the sticky element's scroll container. */
+.kgrid-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: clip;
+  pointer-events: none;
+}
+.kgrid {
+  position: sticky;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  max-height: 100%;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* ---- layout fix (2026-09-30): the two tallest full-width screens ran taller
+   than a laptop screen (1173px and 942px at 1440 wide). Width caps keep them
+   near 700px high; width, not max-height, because they lazy-load. */
+.bleed.shot img[src*="profile-with-assistant"],
+.bleed.shot img[src*="06-extended-view"] { display: block; margin-inline: auto; }
+.bleed.shot img[src*="profile-with-assistant"] { width: min(100%, 820px); }
+.bleed.shot img[src*="06-extended-view"]       { width: min(100%, 1000px); }
+
+/* ------------------------------------------ screen sizing (2026-09-30)
+   Full-width screens and the hero ran the whole 1344px bleed and up to 880px
+   tall. They now share one 1120px frame (about 1024px of image at 1440 wide),
+   width-based so lazy images keep their size before they load. */
+.bleed.shot,
+.hero-visual { max-width: min(var(--bleed), 1120px); }
+.bleed.shot img,
+.hero-visual img { display: block; width: 100%; height: auto; margin-inline: auto; }

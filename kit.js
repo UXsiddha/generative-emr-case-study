@@ -22,15 +22,28 @@
   var draws = [], stories = [], modeHooks = [];
 
   /* Every demo plays itself: show(i) for each step in turn, looping, and
-     only while it is on screen. */
-  function autoplay(el, count, show, ms) {
-    var i = -1, t = null;
-    var tick = function () { i = (i + 1) % count; show(i); t = setTimeout(tick, typeof ms === 'function' ? ms(i) : ms); };
+     only while it is on screen. Reduced motion gets the first step, still.
+     Given a ctl element, a Pause / Play button is added to it. */
+  function autoplay(el, count, show, ms, ctl) {
+    if (reduced) { show(0); return; }
+    var i = -1, t = null, seen = false, stopped = false;
+    var wait = function () { return typeof ms === 'function' ? ms(i) : ms; };
+    var tick = function () { i = (i + 1) % count; show(i); t = setTimeout(tick, wait()); };
+    var halt = function () { clearTimeout(t); t = null; };
+    var run = function () { if (seen && !stopped && !t) { if (i < 0) tick(); else t = setTimeout(tick, wait()); } };
     new IntersectionObserver(function (es) {
-      var e = es[es.length - 1];
-      if (e.isIntersecting) { if (!t) tick(); }
-      else { clearTimeout(t); t = null; }
+      seen = es[es.length - 1].isIntersecting;
+      if (seen) run(); else halt();
     }, { threshold: 0.25 }).observe(el);
+    if (!ctl) return;
+    var btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'ap-toggle'; btn.textContent = 'Pause screens';
+    btn.addEventListener('click', function () {
+      stopped = !stopped;
+      btn.textContent = stopped ? 'Play screens' : 'Pause screens';
+      if (stopped) halt(); else run();
+    });
+    ctl.appendChild(btn);
   }
 
   /* numbers: Indian grouping where asked, decimals where the figure has them */
@@ -40,9 +53,9 @@
     return loc ? v.toLocaleString(loc, { minimumFractionDigits: d, maximumFractionDigits: d }) : v.toFixed(d);
   }
 
-  var noPin = false;
+  var noPin = false, noGsap = false;
   function setMode() {
-    noPin = narrow.matches || reduced;
+    noPin = narrow.matches || reduced || noGsap;
     root.classList.toggle('no-pin', noPin);
     draws.forEach(function (d) { d.fn(noPin ? 1 : 0, noPin); });
     modeHooks.forEach(function (f) { f(noPin); });
@@ -134,6 +147,10 @@
       /* count-ups, once each */
       $$('[data-count]').forEach(function (n) {
         var to = Number(n.getAttribute('data-count')), o = { v: 0 };
+        /* screen readers and find-in-page get the real figure, never the count */
+        var real = document.createElement('span');
+        real.className = 'vh'; real.textContent = fmt(to, n);
+        n.parentNode.insertBefore(real, n); n.setAttribute('aria-hidden', 'true');
         n.textContent = fmt(0, n);
         gsap.to(o, { v: to, duration: 1.4, ease: 'power3.out', onUpdate: function () { n.textContent = fmt(o.v, n); },
           onComplete: function () { n.textContent = fmt(to, n); },
@@ -173,24 +190,57 @@
     return true;
   }
 
+  /* below 1080px the chapter links fold into a Chapters menu under the bar:
+     Escape or a chosen chapter closes it, and focus goes back to the button */
+  function chapterMenu() {
+    var bar = $('.bar'), nav = $('.bar-nav'), cta = $('.bar .btn');
+    if (!bar || !nav) return;
+    nav.id = nav.id || 'chapters';
+    var btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'bar-menu'; btn.textContent = 'Chapters';
+    btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-controls', nav.id);
+    bar.insertBefore(btn, cta || null);
+    var set = function (open, refocus) {
+      nav.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', String(open));
+      if (!open && refocus) btn.focus();
+    };
+    btn.addEventListener('click', function () { set(!nav.classList.contains('is-open')); });
+    nav.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('is-open')) set(false, true);
+    });
+    document.addEventListener('click', function (e) {
+      if (nav.classList.contains('is-open') && !bar.contains(e.target)) set(false);
+    });
+  }
+
   window.KIT = {
     $: $, $$: $$, clamp: clamp, reduced: reduced, autoplay: autoplay,
     draw: function (el, fn) { if (el) draws.push({ el: el, fn: fn }); },
     mode: function (fn) { modeHooks.push(fn); },
     story: function (el, fn) {
       if (!el) return;
-      stories.push({ el: el, fn: fn, cur: -1, steps: $$('.story-steps > li', el), media: $$('.story-media > *', el) });
+      var st = { el: el, fn: fn, cur: -1, steps: $$('.story-steps > li', el), media: $$('.story-media > *', el) };
+      /* each step carries a copy of its own screen, shown when the story is
+         not pinned (narrow, reduced motion), so nothing has to cycle */
+      if (st.media.length) st.steps.forEach(function (li, i) {
+        var m = st.media[Number(li.getAttribute('data-show') || i)];
+        if (!m) return;
+        var c = m.cloneNode(true);
+        c.classList.remove('is-on'); c.classList.add('st-media');
+        li.appendChild(c);
+      });
+      stories.push(st);
     },
     start: function () {
+      chapterMenu();
       setMode();
       if (narrow.addEventListener) narrow.addEventListener('change', setMode);
       var gsapOn = initScroll();
-      /* without the scroll-driven story (narrow, reduced, no GSAP), steps play in turn */
-      stories.forEach(function (st) {
-        storyShow(st, 0);
-        var auto = function () { return narrow.matches || reduced || !gsapOn; };
-        autoplay(st.el, st.steps.length, function (i) { if (auto()) storyShow(st, i); }, 4200);
-      });
+      /* without GSAP nothing drives the pinned layout, so fall back to the unpinned one */
+      if (!gsapOn) { noGsap = true; setMode(); }
+      stories.forEach(function (st) { storyShow(st, 0); });
     }
   };
 })();
