@@ -57,13 +57,52 @@
       </div>
       <div class="a-built" id="built">
         <div class="mark"><span>01</span><span>Product overview</span></div>
-        <h2 class="h-sec" id="built-h" tabindex="-1">What if the EMR could listen to the doctor, and fill itself in?</h2>
+        <h2 class="h-sec" id="built-h" tabindex="-1">The same medical record, filling in real time as the doctor speaks.</h2>
         <p class="body">An assistant that sits beside the medical record doctors already use. Doctors type or talk normally, and it fills in the record&rsquo;s fields as they go. The record stays the same; only the way it gets filled in changes.</p>
         <ol class="asks is-auto" id="built-asks" aria-label="The screens the record is showing">
           <li><span>Session</span>The assistant docked beside the record</li>
-          <li><span>Consultation</span>Vitals dictated, fields filled</li>
+          <li><span>Consultation</span>Complaints, vitals and medication fill in live as the doctor speaks</li>
         </ol>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================= AT A GLANCE
+     Closes the opening fold with the page's own figures, summarised: the
+     existing EMR's growth (from #existing) and Generative EMR's use so far
+     (from the dashboard in #impact). Nothing new; each card says whose
+     number it is, because the two are not the same thing. -->
+<section class="glance" aria-labelledby="glance-h">
+  <div class="wrap">
+    <div class="glance-head">
+      <h2 id="glance-h" class="kicker">At a glance</h2>
+      <a class="g-more" href="#existing">Where these come from <span aria-hidden="true">&rarr;</span></a>
+    </div>
+    <div class="g-grid">
+      <article class="g-card g-hero rv">
+        <p class="g-tag"><span class="tag-own">The existing EMR</span></p>
+        <p class="g-k">Prescriptions generated</p>
+        <p class="g-num"><span data-count="716280" data-locale="en-IN">7,16,280</span></p>
+        <p class="g-sub">From 2,21,728 in 2022, all typed by hand, before speech-to-text.</p>
+        <p class="g-delta"><span aria-hidden="true">&#8599;</span> 3.2&times; &middot; up 223%</p>
+        <div class="g-bars" aria-hidden="true">
+          <div class="g-bar" style="--w: 31%"><span>2022</span><i></i><b>2,21,728</b></div>
+          <div class="g-bar is-now" style="--w: 100%"><span>Now</span><i></i><b>7,16,280</b></div>
+        </div>
+      </article>
+      <article class="g-card rv">
+        <p class="g-tag"><span class="tag-own">The existing EMR</span></p>
+        <p class="g-num"><span data-count="15798" data-locale="en-IN">15,798</span></p>
+        <p class="g-k">Unique doctors using it</p>
+        <p class="g-sub">From 7,160 in 2022. 2.2&times;, up 121%.</p>
+      </article>
+      <article class="g-card rv">
+        <p class="g-tag"><span class="tag-m">Generative EMR</span></p>
+        <p class="g-num"><span data-count="87">87</span></p>
+        <p class="g-k">Consultations so far</p>
+        <p class="g-sub">April to September 2026, June the busiest at 26. Use, not results.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -72,28 +111,29 @@
 <section class="sec problem" id="problem" aria-labelledby="problem-h">
   <div class="wrap">
     <div class="mark"><span>02</span><span>The problem</span></div>
-    <h2 id="problem-h" class="h-statement rv">The form was never the problem. <em>The typing was.</em></h2>
+    <h2 id="problem-h" class="h-statement rv">Two to three minutes of typing, <em>for every single prescription.</em></h2>
     <div class="split2 sec-gap">
-      <p class="pull">The problem was filling in the form by hand, not the form itself.</p>
+      <p class="pull">It takes even longer for specialists: a dentist has to mark each tooth on the chart, one by one, before writing a single word.</p>
       <p class="body">In most medical record systems, doctors type every detail into fixed fields, during or after the visit. The form itself was fine: the fields were the right ones, and no doctor wanted a different form. What wore them down was typing it all by hand, between patients, all day.</p>
     </div>
     <div class="evidence sec-gap">
-      <p class="kicker"><span class="tag-src">Industry evidence</span> Clinical documentation today</p>
+      <p class="kicker"><span class="tag-src">Industry evidence</span> How much of a doctor&rsquo;s time the record takes</p>
       <dl class="figs figs-cap">
-        <div><dt>Per patient</dt><dd><small class="pre">~</small><span data-count="36">36</span><small>min</small></dd><p>on medical record (EHR) tasks, often after hours.</p></div>
-        <div><dt>For every hour of care</dt><dd><span data-count="2">2</span><small>hrs</small></dd><p>of paperwork for every hour spent with patients.</p></div>
-        <div><dt>Of the workday</dt><dd><small class="pre">up to</small>&frac12;</dd><p>Up to half of a clinician&rsquo;s workday goes to medical records and desk work.</p></div>
+        <div><dt>Record time per visit</dt><dd><small class="pre">~</small><span data-count="36">36</span><small>min</small></dd><p>A doctor spends about 36 minutes on the record for each patient visit. The visit itself is booked for 30.</p></div>
+        <div><dt>Desk time per hour of care</dt><dd><small class="pre">~</small><span data-count="2">2</span><small>hrs</small></dd><p>For every hour a doctor spends with patients, nearly two more go to the record and desk work.</p></div>
+        <div><dt>Extra work at night</dt><dd>1&ndash;2<small>hrs</small></dd><p>After the clinic closes, doctors spend another one to two hours on the record each night.</p></div>
       </dl>
       <div class="timeuse-block sec-gap">
         <p class="kicker">How a clinician&rsquo;s time is actually spent</p>
-        <div class="timeuse" role="img" aria-label="45% EMR, 30% patient, 25% admin.">
-          <div class="tu-seg" style="--p:45"><p class="tu-num"><span data-count="45">45</span>%</p><div class="tu-track"><span class="tu-bar"></span></div><p class="tu-label">EMR</p></div>
-          <div class="tu-seg" style="--p:30"><p class="tu-num"><span data-count="30">30</span>%</p><div class="tu-track"><span class="tu-bar"></span></div><p class="tu-label">Patient</p></div>
-          <div class="tu-seg" style="--p:25"><p class="tu-num"><span data-count="25">25</span>%</p><div class="tu-track"><span class="tu-bar"></span></div><p class="tu-label">Admin</p></div>
+        <div class="timeuse" role="img" aria-label="49% medical record and desk work, 27% with the patient, 24% other tasks.">
+          <div class="tu-seg" style="--p:49"><p class="tu-num"><span data-count="49">49</span>%</p><div class="tu-track"><span class="tu-bar"></span></div><p class="tu-label">Record and desk work</p></div>
+          <div class="tu-seg" style="--p:27"><p class="tu-num"><span data-count="27">27</span>%</p><div class="tu-track"><span class="tu-bar"></span></div><p class="tu-label">With the patient</p></div>
+          <div class="tu-seg" style="--p:24"><p class="tu-num"><span data-count="24">24</span>%</p><div class="tu-track"><span class="tu-bar"></span></div><p class="tu-label">Other</p></div>
         </div>
         <p class="tu-read">More of the day goes to the record than to the patient.</p>
       </div>
       <p class="fine">Many doctors say record-keeping is a main reason for burnout and lower job satisfaction.</p>
+      <p class="fine sources">Sources: per visit, Rotenstein et al., <i>JAMA Network Open</i>, 2023 (median 36.2 minutes against 30-minute booked visits, US primary care). Hour with patients, after hours and the time split, Sinsky et al., <i>Annals of Internal Medicine</i>, 2016 (57 US physicians observed; after-hours from the diaries of 21). Figures are from US studies, not Bajaj Finserv Health.</p>
     </div>
   </div>
 </section>
@@ -126,15 +166,15 @@
 <section class="sec existing" id="existing" aria-labelledby="existing-h">
   <div class="wrap">
     <p class="kicker"><span class="tag-own">The existing EMR&rsquo;s own history</span></p>
-    <h2 id="existing-h" class="h-sec rv">The EMR was not failing. <em>It was so widely used that every slow step added up.</em></h2>
+    <h2 id="existing-h" class="h-sec rv">The EMR worked well. <em>At this scale, fixing even small delays made it perform better.</em></h2>
   </div>
   <figure class="shot open"><img src="public/screens/web/existing-record.webp" width="2000" height="1201" alt="The existing prescription record at Bajaj Finserv Health: patient header, EMR templates, chief complaints, examinations and the footer actions." loading="lazy" decoding="async"><figcaption><span>Fig. 01</span>The prescription record doctors already used. The round button at the bottom right is the assistant&rsquo;s entry point.</figcaption></figure>
   <div class="wrap">
     <div class="metrics">
-      <div class="m-row"><p class="m-num"><span data-count="716280" data-locale="en-IN">7,16,280</span></p><div class="m-txt"><p class="m-k">Prescriptions generated</p><p>From 2,21,728 in 2022. &uarr; 223% on the old version.</p></div></div>
-      <div class="m-row"><p class="m-num"><span data-count="15798" data-locale="en-IN">15,798</span></p><div class="m-txt"><p class="m-k">Active doctors</p><p>From 7,160 in 2022. &uarr; 75% on the old version.</p></div></div>
+      <div class="m-row"><p class="m-num"><span data-count="716280" data-locale="en-IN">7,16,280</span></p><div class="m-txt"><p class="m-k">Prescriptions generated</p><p>Up from 2,21,728 in 2022, a 223% rise. Every one typed by hand.</p></div></div>
+      <div class="m-row"><p class="m-num"><span data-count="15798" data-locale="en-IN">15,798</span></p><div class="m-txt"><p class="m-k">Unique doctors using it</p><p>Up from 7,160 in 2022, a 121% rise.</p></div></div>
     </div>
-    <p class="caveat">These are the existing EMR&rsquo;s growth figures, not this project&rsquo;s results. They are why it was funded: more doctors, filling more forms, more often.</p>
+    <p class="caveat">This growth, all on the typed EMR, is what prompted the project: a base this large meant any time saved per prescription would multiply across thousands of doctors every day.</p>
   </div>
 </section>
 

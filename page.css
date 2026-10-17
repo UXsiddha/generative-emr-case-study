@@ -465,3 +465,43 @@
   .emr-thread { min-height: 12rem; }
   .emr-tabs { gap: 1rem; overflow-x: auto; scrollbar-width: none; }
 }
+
+/* at a glance: closes the opening fold with the page's own figures, as a
+   bento, after the Wellness Store's (same .g-* names, one card fewer). The
+   large card compares 2022 with now as two bars; each card is tagged with
+   whose number it is: the existing EMR's, or Generative EMR's own. */
+.glance { padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(1rem, 3vw, 2rem); }
+.glance-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.75rem 1.5rem; margin-bottom: 1.25rem; }
+.glance-head .kicker { margin: 0; }
+.g-more { font: 500 0.9rem var(--display); color: var(--fg-2); text-decoration: none; border-bottom: 1px solid var(--line-2); padding-bottom: 2px; transition: color 0.3s, border-color 0.3s; }
+.g-more:hover, .g-more:focus-visible { color: var(--fg); border-color: var(--accent); }
+.g-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 10px; }
+.g-card { position: relative; display: flex; flex-direction: column; min-height: 12rem; padding: clamp(1.1rem, 1.8vw, 1.6rem); border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--bg-2); overflow: hidden; }
+.g-card p { margin: 0; }
+.g-tag { margin-bottom: 1rem !important; }
+.g-tag > span { margin-right: 0; }
+.g-num { font: 400 clamp(2.4rem, 4vw, 3.4rem)/1 var(--display); letter-spacing: -0.04em; color: var(--fg); font-variant-numeric: tabular-nums; }
+.g-card:not(.g-hero) .g-num { margin-bottom: auto; padding-bottom: 1.5rem; }
+.g-k { font: 500 0.98rem/1.3 var(--display); color: var(--fg); }
+.g-sub { margin-top: 0.3rem !important; font: 400 0.88rem/1.45 var(--sans); color: var(--fg-3); }
+.g-hero { grid-column: span 2; grid-row: span 2; min-height: 24rem; background: radial-gradient(120% 90% at 85% 10%, rgba(var(--accent-rgb), 0.12), transparent 60%), var(--bg-2); }
+.g-hero .g-k { color: var(--fg-2); font-weight: 400; }
+.g-hero .g-num { margin-top: 0.6rem; font-size: clamp(3.4rem, 7vw, 6rem); }
+.g-delta { align-self: flex-start; margin-top: 1rem !important; padding: 0.35rem 0.8rem; border-radius: 999px; background: rgba(var(--accent-rgb), 0.12); border: 1px solid rgba(var(--accent-rgb), 0.35); font: 500 0.9rem var(--display); color: var(--accent); }
+.g-bars { display: grid; gap: 0.7rem; margin-top: auto; padding-top: 1.75rem; }
+.g-bar { display: grid; grid-template-columns: 3.2rem minmax(0, 1fr) auto; align-items: center; gap: 0.9rem; font: 400 0.78rem var(--mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--fg-3); }
+.g-bar i { display: block; height: 10px; width: var(--w); border-radius: 999px; background: var(--line-2); transform-origin: left; }
+.g-bar.is-now i { background: linear-gradient(90deg, rgba(var(--accent-rgb), 0.55), var(--accent)); box-shadow: 0 0 24px rgba(var(--accent-rgb), 0.35); }
+.g-bar b { font: 500 0.9rem var(--display); letter-spacing: 0; text-transform: none; color: var(--fg-2); font-variant-numeric: tabular-nums; }
+.g-bar.is-now b { color: var(--fg); }
+@media (max-width: 900px) {
+  .g-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: auto; }
+  .g-hero { min-height: 21rem; }
+}
+@media (max-width: 520px) {
+  .g-card:not(.g-hero) { min-height: 10rem; }
+  .g-card:not(.g-hero) .g-num { font-size: 2.2rem; padding-bottom: 1rem; }
+}
+
+/* the existing EMR's own figures run 5% smaller than the kit's .m-num */
+.existing .m-num { font-size: clamp(4.275rem, 11.4vw, 9.975rem); }
