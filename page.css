@@ -505,3 +505,22 @@
 
 /* the existing EMR's own figures run 5% smaller than the kit's .m-num */
 .existing .m-num { font-size: clamp(4.275rem, 11.4vw, 9.975rem); }
+
+/* the problem: two routine examples, the second more involved (a dental chart) */
+.prob-lede { margin-top: 1.5rem; max-width: 38rem; }
+.prob-ex { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2vw, 1.5rem); }
+.px-card { display: flex; flex-direction: column; padding: clamp(1.5rem, 3vw, 2.25rem); border: 1px solid var(--line-2); border-radius: var(--r-lg); background: var(--bg-2); }
+.px-card .kicker { margin-bottom: 1.25rem; }
+.px-fig { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.9rem; margin: 0; font: 500 clamp(2.4rem, 4.4vw, 3.6rem)/1 var(--display); letter-spacing: -0.035em; color: var(--fg); }
+.px-fig small { margin-left: -0.6rem; font-size: 0.4em; letter-spacing: -0.01em; color: var(--fg-2); }
+.px-fig .tag-h { font-size: 0.62rem; letter-spacing: 0.06em; }
+.px-copy { margin: 1rem 0 1.75rem; max-width: 34ch; font-size: 0.98rem; line-height: 1.55; color: var(--fg-2); }
+.px-form, .px-teeth { margin-top: auto; }
+.px-form { display: grid; gap: 0.5rem; }
+.px-form i { display: block; height: 0.6rem; border-radius: 4px; background: var(--line-2); }
+.px-form i:nth-child(1) { width: 72%; } .px-form i:nth-child(2) { width: 54%; } .px-form i:nth-child(3) { width: 86%; } .px-form i:nth-child(4) { width: 40%; }
+.px-teeth { display: grid; grid-template-columns: repeat(8, 1fr); gap: 0.4rem; max-width: 20rem; }
+.px-teeth i { display: block; aspect-ratio: 1 / 1.15; border: 1px solid var(--line-2); border-radius: 6px 6px 10px 10px; }
+.px-teeth i:nth-child(n + 9) { border-radius: 10px 10px 6px 6px; }
+.px-teeth i.on { border-color: rgba(var(--accent-rgb), 0.7); background: rgba(var(--accent-rgb), 0.18); }
+@media (max-width: 720px) { .prob-ex { grid-template-columns: 1fr; } }
